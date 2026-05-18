@@ -1,0 +1,23 @@
+:root {
+  --color-black: #111111;
+  --color-black-soft: #1a1a1a;
+  --color-surface: #202020;
+  --color-cream: #f3f0ea;
+  --color-cream-dark: #e4ded4;
+  --color-gold: #f4c95d;
+  --color-gold-dark: #c99628;
+  --color-white: #ffffff;
+  --color-muted: #9d9790;
+  --color-text: #242424;
+  --color-border: rgba(244, 201, 93, 0.42);
+
+  --font-heading: 'Oswald', 'Arial Narrow', Arial, sans-serif;
+  --font-body: Georgia, 'Times New Roman', serif;
+  --font-ui: Inter, Arial, sans-serif;
+
+  --container: 1180px;
+  --section-y: clamp(72px, 8vw, 132px);
+  --radius-sm: 4px;
+  --radius-md: 14px;
+  --shadow-soft: 0 24px 80px rgba(0, 0, 0, 0.28);
+}

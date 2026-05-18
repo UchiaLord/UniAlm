@@ -1,0 +1,19 @@
+.app-shell {
+  min-height: 100vh;
+}
+
+.scroll-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 30;
+  display: grid;
+  width: 52px;
+  height: 52px;
+  place-items: center;
+  background: var(--color-gold);
+  color: #111;
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  box-shadow: var(--shadow-soft);
+}

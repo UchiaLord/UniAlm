@@ -1,0 +1,441 @@
+:host {
+  display: block;
+}
+
+.hero {
+  position: relative;
+  min-height: calc(100vh - 156px);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: var(--color-black);
+  color: var(--color-white);
+  isolation: isolate;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 2;
+  height: 180px;
+  background: linear-gradient(transparent, rgba(17, 17, 17, 0.84));
+  pointer-events: none;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  filter: grayscale(1) contrast(1.14) brightness(0.64);
+  transform: scale(1.08);
+  transition:
+    opacity 700ms ease,
+    transform 2200ms ease;
+}
+
+.hero__bg.is-active {
+  opacity: 1;
+  transform: scale(1.02);
+}
+
+.hero__shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(circle at 50% 52%, rgba(244, 201, 93, 0.26), transparent 24%),
+    radial-gradient(circle at 16% 72%, rgba(244, 201, 93, 0.18), transparent 24%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.84), rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.78));
+}
+
+.hero__content {
+  position: relative;
+  z-index: 3;
+  width: min(1040px, calc(100% - 32px));
+  text-align: center;
+  animation: fadeUp 800ms ease both;
+}
+
+.hero__badge {
+  width: clamp(98px, 12vw, 170px);
+  margin: 0 auto 20px;
+  filter: drop-shadow(0 18px 32px rgba(0, 0, 0, 0.55));
+}
+
+.hero h1 {
+  max-width: 1100px;
+  margin: 12px auto 0;
+  font-size: clamp(4.8rem, 13vw, 14rem);
+  color: var(--color-white);
+  text-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+}
+
+.hero p:not(.section-kicker) {
+  max-width: 780px;
+  margin: 22px auto 0;
+  color: #e4ded4;
+}
+
+.hero__actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+
+.hero__arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 4;
+  display: grid;
+  width: 56px;
+  height: 72px;
+  place-items: center;
+  border: 1px solid rgba(244, 201, 93, 0.35);
+  background: rgba(17, 17, 17, 0.52);
+  color: var(--color-white);
+  cursor: pointer;
+  font-size: 3rem;
+  line-height: 1;
+  transform: translateY(-50%);
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease;
+}
+
+.hero__arrow:hover {
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+  color: #111;
+}
+
+.hero__arrow--left {
+  left: 24px;
+}
+
+.hero__arrow--right {
+  right: 24px;
+}
+
+.hero__dots {
+  position: absolute;
+  left: 50%;
+  bottom: 34px;
+  z-index: 4;
+  display: flex;
+  gap: 12px;
+  transform: translateX(-50%);
+}
+
+.hero__dots button {
+  width: 13px;
+  height: 13px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.74);
+  cursor: pointer;
+  transition:
+    width 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease;
+}
+
+.hero__dots button.is-active {
+  width: 38px;
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+}
+
+.features {
+  background: var(--color-cream);
+}
+
+.features__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.feature-card {
+  position: relative;
+  min-height: 310px;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  overflow: hidden;
+  padding: 34px 26px;
+  background: var(--color-cream-dark);
+  text-align: center;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    background 220ms ease;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(244, 201, 93, 0.3);
+  opacity: 0;
+  transform: scale(0.96);
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  background: #e8e0d4;
+  box-shadow: var(--shadow-soft);
+}
+
+.feature-card:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.feature-card span {
+  position: relative;
+  color: var(--color-gold);
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 6vw, 5.4rem);
+  font-weight: 800;
+  line-height: 1;
+  opacity: 0.92;
+}
+
+.feature-card h2 {
+  position: relative;
+  margin-top: 18px;
+  font-size: clamp(1.45rem, 2.1vw, 2rem);
+}
+
+.feature-card p {
+  position: relative;
+  margin-top: 22px;
+  font-size: 1rem;
+}
+
+.intro {
+  text-align: center;
+}
+
+.intro p {
+  max-width: 1260px;
+  margin: 0 auto;
+}
+
+.drink-preview__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 36px;
+  align-items: end;
+}
+
+.drink-preview article {
+  text-align: center;
+}
+
+.drink-preview h2 {
+  max-width: 540px;
+  min-height: 110px;
+  margin: 0 auto 24px;
+  font-size: clamp(2rem, 3.6vw, 3.4rem);
+}
+
+.drink-preview img {
+  width: 100%;
+  aspect-ratio: 16 / 10.5;
+  object-fit: cover;
+  transition: transform 260ms ease, filter 260ms ease;
+}
+
+.drink-preview article:hover img {
+  transform: scale(1.025);
+  filter: contrast(1.08) saturate(1.05);
+}
+
+.story h2,
+.event-teaser h2 {
+  font-size: clamp(3rem, 6vw, 6rem);
+  color: var(--color-white);
+}
+
+.section-mark--left {
+  margin-left: 0;
+}
+
+.video-card {
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.video-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  filter: grayscale(1) brightness(0.7);
+  transition: transform 260ms ease;
+}
+
+.video-card:hover img {
+  transform: scale(1.03);
+}
+
+.video-card button {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 78px;
+  height: 78px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-gold);
+  color: #111;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  font-size: 1.7rem;
+  box-shadow: 0 18px 42px rgba(244, 201, 93, 0.25);
+}
+
+.reservation {
+  background: var(--color-cream);
+}
+
+.reservation__lead {
+  max-width: 840px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+
+.reservation__form {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: grid;
+  gap: 24px;
+}
+
+.reservation__form fieldset {
+  border: 2px solid #bfb7ad;
+  padding: 30px;
+}
+
+.reservation__form legend {
+  padding: 0 10px;
+  font-family: var(--font-ui);
+  font-style: italic;
+}
+
+.reservation__message {
+  margin-top: 20px;
+}
+
+.event-teaser {
+  background: linear-gradient(90deg, var(--color-cream-dark) 0 43%, var(--color-cream) 43%);
+}
+
+.event-teaser img {
+  width: 100%;
+  max-height: 720px;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.08);
+}
+
+.event-teaser h2 {
+  color: var(--color-text);
+}
+
+.event-teaser .btn {
+  margin-top: 32px;
+}
+
+.menu-teaser {
+  text-align: center;
+}
+
+.menu-teaser__images {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 430px));
+  justify-content: center;
+  gap: 40px;
+  margin-top: 54px;
+}
+
+.menu-teaser__images img {
+  width: 100%;
+  box-shadow: var(--shadow-soft);
+}
+
+.gallery {
+  background: var(--color-cream);
+}
+
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 22px;
+  margin-top: 48px;
+}
+
+.gallery__grid img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  transition: transform 220ms ease, filter 220ms ease;
+}
+
+.gallery__grid img:hover {
+  transform: translateY(-6px);
+  filter: saturate(1.18) contrast(1.08);
+}
+
+@media (max-width: 1020px) {
+  .features__grid,
+  .gallery__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .drink-preview__grid,
+  .menu-teaser__images {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero__arrow {
+    width: 44px;
+    height: 58px;
+    font-size: 2.2rem;
+  }
+
+  .hero__arrow--left {
+    left: 10px;
+  }
+
+  .hero__arrow--right {
+    right: 10px;
+  }
+}
+
+@media (max-width: 620px) {
+  .hero {
+    min-height: 760px;
+  }
+
+  .features__grid,
+  .gallery__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reservation__form fieldset {
+    padding: 22px;
+  }
+}

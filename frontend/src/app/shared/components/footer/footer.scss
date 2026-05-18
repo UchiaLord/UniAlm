@@ -1,0 +1,56 @@
+.site-footer {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.site-footer__banner {
+  min-height: 260px;
+  display: grid;
+  place-items: center;
+  padding: 48px 24px;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.36), rgba(0, 0, 0, 0.48)),
+    url('/assets/images/drinks/beer-bottles.jpg') center / cover;
+  text-align: center;
+}
+
+.site-footer__banner h2 {
+  max-width: 900px;
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  color: var(--color-white);
+}
+
+.site-footer__inner {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  gap: 48px;
+  padding-block: 64px;
+}
+
+.site-footer__logo {
+  width: 86px;
+  margin-bottom: 18px;
+}
+
+.site-footer__nav,
+.site-footer__contact {
+  display: grid;
+  gap: 12px;
+  font-family: var(--font-ui);
+  font-style: normal;
+}
+
+.site-footer a {
+  color: var(--color-muted);
+  transition: color 180ms ease;
+}
+
+.site-footer a:hover {
+  color: var(--color-gold);
+}
+
+@media (max-width: 860px) {
+  .site-footer__inner {
+    grid-template-columns: 1fr;
+  }
+}

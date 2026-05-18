@@ -1,0 +1,26 @@
+.container {
+  width: min(var(--container), calc(100% - 32px));
+  margin-inline: auto;
+}
+
+.page-section {
+  padding-block: var(--section-y);
+}
+
+.page-section--dark {
+  background: var(--color-black-soft);
+  color: var(--color-white);
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(28px, 5vw, 80px);
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}

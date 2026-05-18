@@ -1,1 +1,41 @@
-<p>navbar works!</p>
+<header class="site-header" id="top">
+  <div class="topbar">
+    <div class="topbar__left">
+      <span>Öffnungszeiten: 20:00 Uhr bis 02:00 Uhr</span>
+      <a href="mailto:info@unialm.at">info&#64;unialm.at</a>
+    </div>
+
+    <div class="topbar__right">
+      <a href="tel:+436606804879">+43 660 680 4879</a>
+      <span>Hörlgasse 10, 1090 Wien</span>
+    </div>
+  </div>
+
+  <nav class="navbar" aria-label="Hauptnavigation">
+    <a class="navbar__brand" routerLink="/" aria-label="Unialm Startseite" (click)="closeMobileMenu()">
+      <img src="/assets/logos/Uni-Alm-Logo-Schrift-1.png" alt="Uni Alm Logo" />
+    </a>
+
+    <button
+      class="navbar__burger"
+      type="button"
+      aria-label="Navigation öffnen"
+      [class.is-open]="mobileOpen()"
+      (click)="toggleMobileMenu()"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="navbar__links" [class.is-open]="mobileOpen()">
+      <a routerLink="/" routerLinkActive="is-active" (click)="closeMobileMenu()">Home</a>
+      <a routerLink="/menu" routerLinkActive="is-active" (click)="closeMobileMenu()">3€ Menu</a>
+      <a routerLink="/ueber-uns" routerLinkActive="is-active" (click)="closeMobileMenu()">Über uns</a>
+      <a routerLink="/events" routerLinkActive="is-active" (click)="closeMobileMenu()">Events</a>
+      <a routerLink="/kontakt" routerLinkActive="is-active" (click)="closeMobileMenu()">Kontakt</a>
+    </div>
+
+    <a class="navbar__cta" routerLink="/reservierung" (click)="closeMobileMenu()">Reservierung</a>
+  </nav>
+</header>
