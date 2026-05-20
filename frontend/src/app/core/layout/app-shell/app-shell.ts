@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { Navbar } from '../../../shared/components/navbar/navbar';
 import { Footer } from '../../../shared/components/footer/footer';
+import { SeoService } from '../../services/seo.services';
 
 @Component({
   selector: 'app-app-shell',
@@ -11,4 +12,10 @@ import { Footer } from '../../../shared/components/footer/footer';
   templateUrl: './app-shell.html',
   styleUrl: './app-shell.scss',
 })
-export class AppShell {}
+export class AppShell {
+  private readonly seoService = inject(SeoService);
+
+  constructor() {
+    this.seoService.init();
+  }
+}

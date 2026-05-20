@@ -22,11 +22,12 @@
 
 .site-footer__banner {
   position: relative;
-  min-height: clamp(280px, 24vw, 430px);
+  min-height: clamp(300px, 27vw, 460px);
   display: grid;
   place-items: center;
   overflow: hidden;
   isolation: isolate;
+  padding: clamp(70px, 7vw, 120px) 0;
 }
 
 .site-footer__banner-bg {
@@ -34,6 +35,7 @@
   inset: 0;
   z-index: 0;
   background:
+    radial-gradient(circle at 50% 42%, rgba(244, 201, 93, 0.12), transparent 36%),
     linear-gradient(rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.72));
   filter: grayscale(1) contrast(1.08) brightness(0.78);
   transform: scale(1.04);
@@ -52,32 +54,35 @@
 .site-footer__banner-content {
   position: relative;
   z-index: 2;
-  width: min(100% - 48px, 1280px);
+  width: min(100% - 48px, 1220px);
   margin: 0 auto;
   text-align: center;
 }
 
 .site-footer__banner-content p {
-  margin: 0 0 18px;
+  margin: 0 0 20px;
   color: #f4c95d;
   font-family: var(--font-heading);
   font-size: clamp(0.78rem, 0.78vw, 0.95rem);
   font-weight: 900;
   letter-spacing: 0.32em;
+  line-height: 1;
   text-transform: uppercase;
 }
 
 .site-footer__banner-content h2 {
-  max-width: 1160px;
+  max-width: 1080px;
   margin: 0 auto;
   color: #fff;
   font-family: var(--font-heading);
-  font-size: clamp(3rem, 5.7vw, 7.5rem);
+  font-size: clamp(3.2rem, 5vw, 6.6rem);
   font-weight: 900;
-  line-height: 0.9;
-  letter-spacing: -0.065em;
+  line-height: 0.92;
+  letter-spacing: -0.055em;
   text-transform: uppercase;
   text-wrap: balance;
+  overflow-wrap: normal;
+  hyphens: none;
 }
 
 .site-footer__inner {
@@ -242,8 +247,29 @@
 }
 
 @media (max-width: 760px) {
+  .site-footer__banner {
+    min-height: 340px;
+    padding: 78px 0 96px;
+  }
+
   .site-footer__banner-content {
-    width: min(100% - 32px, 1280px);
+    width: min(100% - 34px, 620px);
+  }
+
+  .site-footer__banner-content p {
+    margin-bottom: 18px;
+    font-size: 0.78rem;
+    letter-spacing: 0.26em;
+  }
+
+  .site-footer__banner-content h2 {
+    max-width: 360px;
+    font-size: clamp(2.35rem, 10vw, 3.55rem);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    overflow-wrap: break-word;
+    word-break: normal;
+    hyphens: auto;
   }
 
   .site-footer__inner {
@@ -252,5 +278,30 @@
 
   .site-footer__bottom {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 430px) {
+  .site-footer__banner {
+    min-height: 330px;
+  }
+
+  .site-footer__banner-content {
+    width: min(100% - 28px, 360px);
+  }
+
+  .site-footer__banner-content h2 {
+    max-width: 320px;
+    font-size: clamp(2rem, 8.6vw, 2.75rem);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+  }
+}
+
+@media (max-width: 380px) {
+  .site-footer__banner-content h2 {
+    max-width: 292px;
+    font-size: clamp(1.85rem, 8.2vw, 2.35rem);
+    line-height: 1.04;
   }
 }

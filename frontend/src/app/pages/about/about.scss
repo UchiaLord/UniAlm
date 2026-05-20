@@ -1,0 +1,363 @@
+.about-page {
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 16% 12%, rgba(244, 201, 93, 0.14), transparent 32%),
+    linear-gradient(180deg, var(--color-cream) 0%, #ebe6de 100%);
+}
+
+.about-hero {
+  position: relative;
+  min-height: clamp(560px, 74vh, 820px);
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+  color: var(--color-white);
+  background: var(--color-black);
+}
+
+.about-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.44)),
+    url('/assets/images/hero/glasses-with-vodka-on-the-old-board.jpg') center / cover;
+  filter: grayscale(1) contrast(1.1);
+  transform: scale(1.04);
+}
+
+.about-hero__shade {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(244, 201, 93, 0.16), transparent 22%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.72));
+}
+
+.about-hero__shade::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(244, 201, 93, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 201, 93, 0.08) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(circle at center, black, transparent 68%);
+  opacity: 0.36;
+}
+
+.about-hero__content {
+  width: min(920px, calc(100% - 32px));
+  margin-inline: auto;
+  text-align: center;
+  padding-top: 120px;
+  animation: fadeUp 800ms ease both;
+}
+
+.about-hero__kicker {
+  margin-bottom: 18px;
+  color: var(--color-gold);
+  font-family: var(--font-heading);
+  font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.about-hero h1 {
+  font-size: clamp(4.5rem, 13vw, 12rem);
+  letter-spacing: -0.07em;
+  text-shadow: 0 20px 70px rgba(0, 0, 0, 0.72);
+}
+
+.about-hero p:not(.about-hero__kicker) {
+  max-width: 720px;
+  margin: 24px auto 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-family: var(--font-ui);
+  font-size: clamp(1rem, 1.3vw, 1.22rem);
+  line-height: 1.8;
+}
+
+.about-hero__actions,
+.about-signature__actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 38px;
+}
+
+.about-intro__grid,
+.about-events__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(360px, 1.05fr);
+  gap: clamp(34px, 6vw, 92px);
+  align-items: center;
+}
+
+.about-intro__copy h2,
+.about-events__panel h2,
+.about-signature h2,
+.about-section-head h2 {
+  margin-top: 18px;
+  color: var(--color-text);
+  font-size: clamp(3rem, 6vw, 6.6rem);
+}
+
+.about-intro__copy .section-mark,
+.about-events__panel .section-mark {
+  margin-inline: 0;
+}
+
+.about-intro__copy p + p,
+.about-events__panel p + p {
+  margin-top: 24px;
+}
+
+.about-intro__visual {
+  position: relative;
+  min-height: 620px;
+}
+
+.about-photo {
+  overflow: hidden;
+  border: 1px solid rgba(36, 36, 36, 0.12);
+  background: var(--color-black-soft);
+  box-shadow: var(--shadow-soft);
+}
+
+.about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.05);
+  transition:
+    transform 700ms ease,
+    filter 700ms ease;
+}
+
+.about-photo:hover img {
+  transform: scale(1.045);
+  filter: grayscale(0.55) contrast(1.08);
+}
+
+.about-photo--main {
+  height: 620px;
+  clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
+}
+
+.about-fact-card {
+  position: absolute;
+  left: -34px;
+  bottom: 52px;
+  width: min(260px, 70%);
+  padding: 28px;
+  border: 1px solid var(--color-border);
+  background:
+    linear-gradient(135deg, rgba(244, 201, 93, 0.96), rgba(201, 150, 40, 0.96));
+  color: #111;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.26);
+}
+
+.about-fact-card strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 4.6rem;
+  line-height: 0.9;
+}
+
+.about-fact-card span {
+  display: block;
+  margin-top: 10px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.about-values {
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(17, 17, 17, 0.96), rgba(26, 26, 26, 0.98)),
+    url('/assets/images/hero/uni-alm-interior.png') center / cover fixed;
+  color: var(--color-white);
+}
+
+.about-section-head {
+  max-width: 860px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.about-values .about-section-head h2,
+.about-signature h2 {
+  color: var(--color-white);
+}
+
+.about-values__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 56px;
+}
+
+.about-value-card {
+  position: relative;
+  min-height: 360px;
+  padding: clamp(28px, 3vw, 44px);
+  border: 1px solid rgba(244, 201, 93, 0.28);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+  overflow: hidden;
+}
+
+.about-value-card::before {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 5px;
+  background: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 280ms ease;
+}
+
+.about-value-card:hover::before {
+  transform: scaleX(1);
+}
+
+.about-value-card span {
+  color: var(--color-gold);
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.about-value-card h3 {
+  margin-top: 34px;
+  color: var(--color-white);
+  font-size: clamp(2rem, 3.2vw, 3.5rem);
+}
+
+.about-value-card p {
+  margin-top: 24px;
+  color: rgba(255, 255, 255, 0.68);
+  font-family: var(--font-ui);
+  font-size: 1rem;
+}
+
+.about-events {
+  background:
+    radial-gradient(circle at 78% 20%, rgba(244, 201, 93, 0.22), transparent 28%),
+    var(--color-cream);
+}
+
+.about-events__panel {
+  padding: clamp(32px, 5vw, 68px);
+  border: 1px solid rgba(36, 36, 36, 0.1);
+  background: rgba(255, 255, 255, 0.44);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.08);
+}
+
+.about-events__panel .btn {
+  margin-top: 34px;
+}
+
+.about-events__media {
+  height: 680px;
+  overflow: hidden;
+  background: var(--color-black-soft);
+  clip-path: polygon(0 0, 92% 0, 100% 100%, 8% 100%);
+  box-shadow: var(--shadow-soft);
+}
+
+.about-events__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.08);
+}
+
+.about-signature {
+  position: relative;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% -10%, rgba(244, 201, 93, 0.2), transparent 30%),
+    linear-gradient(180deg, #181818 0%, #111 100%);
+}
+
+.about-signature__inner {
+  max-width: 980px;
+}
+
+.about-signature p {
+  max-width: 820px;
+  margin-inline: auto;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+@media (max-width: 980px) {
+  .about-intro__grid,
+  .about-events__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-intro__visual {
+    min-height: auto;
+  }
+
+  .about-photo--main,
+  .about-events__media {
+    height: 520px;
+    clip-path: none;
+  }
+
+  .about-fact-card {
+    left: 20px;
+    bottom: 20px;
+  }
+
+  .about-values__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-value-card {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-hero {
+    min-height: 620px;
+  }
+
+  .about-hero__content {
+    padding-top: 86px;
+  }
+
+  .about-hero__actions,
+  .about-signature__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .about-hero__actions .btn,
+  .about-signature__actions .btn {
+    width: 100%;
+  }
+
+  .about-photo--main,
+  .about-events__media {
+    height: 420px;
+  }
+
+  .about-fact-card {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    width: 100%;
+    margin-top: 18px;
+  }
+}

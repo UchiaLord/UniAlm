@@ -9,11 +9,11 @@ interface HeroSlide {
   headlineCenter?: string;
   scriptWord: string;
   centerImage?: string;
-  centerBadge?: string;
 }
 
 @Component({
   selector: 'app-home',
+  standalone: true,
   imports: [RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.scss',
@@ -22,7 +22,7 @@ export class Home implements OnDestroy {
   protected readonly heroSlides: HeroSlide[] = [
     {
       variant: 'beer',
-      background: '/assets/images/hero/uni-alm-interior.png',
+      background: '/assets/images/hero/uni-alm.webp',
       headlineLeft: '3€',
       headlineRight: 'Bar',
       scriptWord: 'Uni Alm',
@@ -30,21 +30,24 @@ export class Home implements OnDestroy {
     },
     {
       variant: 'atmosphere',
-      background: '/assets/images/hero/glasses-with-vodka-on-the-old-board.jpg',
-      headlineCenter: 'Atmosphere',
-      scriptWord: 'great',
+      background: '/assets/images/hero/uni-alm-interior.png',
+      headlineCenter: 'Atmosphäre',
+      scriptWord: 'Wien',
     },
     {
       variant: 'talk',
-      background: '/assets/images/hero/men-with-drinks-in-the-pub-2023.jpg',
+      background: '/assets/images/hero/interior2.jpg',
       headlineLeft: 'Drink',
       headlineRight: 'Talk',
       scriptWord: '&',
     },
   ];
 
+  protected readonly guestOptions = Array.from({ length: 60 }, (_, index) => index + 1);
+
   protected readonly activeSlideIndex = signal(0);
   protected readonly activeSlide = computed(() => this.heroSlides[this.activeSlideIndex()]);
+  protected readonly isUnialmVideoPlaying = signal(false);
 
   private readonly autoplayInterval = window.setInterval(() => {
     this.nextSlide();
@@ -72,9 +75,7 @@ export class Home implements OnDestroy {
     return value ? value.split('') : [];
   }
 
-  readonly isUnialmVideoPlaying = signal(false);
-
-  playUnialmVideo(): void {
+  protected playUnialmVideo(): void {
     this.isUnialmVideoPlaying.set(true);
   }
 }

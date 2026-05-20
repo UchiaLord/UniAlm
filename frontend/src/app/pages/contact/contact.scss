@@ -1,0 +1,741 @@
+.contact-page {
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 18% 8%, rgba(244, 201, 93, 0.14), transparent 32%),
+    linear-gradient(180deg, var(--color-cream) 0%, #ebe6de 100%);
+}
+
+/* HERO */
+
+.contact-hero {
+  position: relative;
+  min-height: clamp(560px, 74vh, 820px);
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+  color: var(--color-white);
+  background: var(--color-black);
+}
+
+.contact-hero::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 180px;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(10, 10, 10, 0.78) 55%,
+      #0d0d0d 100%
+    );
+}
+
+.contact-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.54)),
+    url('/assets/images/hero/men-with-drinks-in-the-pub-2023.jpg') center / cover;
+  filter: grayscale(1) contrast(1.1);
+  transform: scale(1.04);
+}
+
+.contact-hero__shade {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(244, 201, 93, 0.18), transparent 22%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.78));
+}
+
+.contact-hero__content {
+  position: relative;
+  z-index: 2;
+  width: min(980px, calc(100% - 32px));
+  margin-inline: auto;
+  text-align: center;
+  padding-top: 120px;
+}
+
+.contact-hero__kicker {
+  color: var(--color-gold);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.contact-hero h1 {
+  margin-top: 18px;
+  font-size: clamp(5rem, 15vw, 13rem);
+  letter-spacing: -0.07em;
+}
+
+.contact-hero p:not(.contact-hero__kicker) {
+  max-width: 760px;
+  margin: 24px auto 0;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.contact-hero__actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 38px;
+  flex-wrap: wrap;
+}
+
+/* COMMAND BAR */
+
+.contact-command {
+  margin-top: -60px;
+  position: relative;
+  z-index: 10;
+}
+
+.contact-command__bar {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border: 1px solid rgba(244, 201, 93, 0.22);
+  background:
+    linear-gradient(180deg, rgba(18, 18, 18, 0.92), rgba(12, 12, 12, 0.94));
+  backdrop-filter: blur(18px);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.contact-command__item {
+  position: relative;
+  overflow: hidden;
+  padding: 34px;
+  border-right: 1px solid rgba(244, 201, 93, 0.14);
+  transition:
+    transform 220ms ease,
+    background 220ms ease;
+}
+
+.contact-command__item:last-child {
+  border-right: 0;
+}
+
+.contact-command__item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      120deg,
+      transparent,
+      rgba(244, 201, 93, 0.12),
+      transparent
+    );
+  transform: translateX(-120%);
+  transition: transform 560ms ease;
+}
+
+.contact-command__item:hover {
+  transform: translateY(-4px);
+  background: rgba(244, 201, 93, 0.05);
+}
+
+.contact-command__item:hover::before {
+  transform: translateX(120%);
+}
+
+.contact-command__item span {
+  display: block;
+  color: var(--color-gold);
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.contact-command__item strong {
+  display: block;
+  margin-top: 10px;
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 1.5vw, 1.45rem);
+}
+
+.contact-hub {
+  position: relative;
+  margin-top: -1px;
+  padding-top: clamp(110px, 9vw, 150px);
+  background:
+    radial-gradient(circle at 82% 14%, rgba(244, 201, 93, 0.2), transparent 28%),
+    linear-gradient(180deg, #181818 0%, #111 100%);
+  color: var(--color-white);
+}
+
+.contact-section-head {
+  max-width: 860px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.contact-section-head h2 {
+  margin-top: 18px;
+  color: var(--color-white);
+  font-size: clamp(3.2rem, 6vw, 6.4rem);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+}
+
+.contact-section-head__copy {
+  max-width: 720px;
+  margin: 28px auto 0;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: clamp(1rem, 1.2vw, 1.16rem);
+  line-height: 1.8;
+}
+
+.contact-hub__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 56px;
+}
+
+.contact-tile {
+  position: relative;
+  min-width: 0;
+  min-height: 430px;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(26px, 3vw, 40px);
+  border: 1px solid rgba(244, 201, 93, 0.26);
+  background:
+    radial-gradient(circle at 100% 0, rgba(244, 201, 93, 0.12), transparent 42%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+  color: var(--color-white);
+  overflow: hidden;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.22);
+  transition:
+    transform 260ms ease,
+    border-color 260ms ease,
+    background 260ms ease,
+    box-shadow 260ms ease;
+}
+
+.contact-tile::before {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 5px;
+  background: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms ease;
+}
+
+.contact-tile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(120deg, transparent, rgba(244, 201, 93, 0.12), transparent);
+  transform: translateX(-120%);
+  pointer-events: none;
+  transition: transform 620ms ease;
+}
+
+.contact-tile:hover {
+  transform: translateY(-12px);
+  border-color: rgba(244, 201, 93, 0.78);
+  background:
+    radial-gradient(circle at 100% 0, rgba(244, 201, 93, 0.22), transparent 46%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.105), rgba(255, 255, 255, 0.035));
+  box-shadow:
+    0 34px 90px rgba(0, 0, 0, 0.34),
+    inset 0 0 0 1px rgba(244, 201, 93, 0.12);
+}
+
+.contact-tile:hover::before {
+  transform: scaleX(1);
+}
+
+.contact-tile:hover::after {
+  transform: translateX(120%);
+}
+
+.contact-tile--gold {
+  background:
+    radial-gradient(circle at 100% 0, rgba(255, 255, 255, 0.22), transparent 42%),
+    linear-gradient(135deg, rgba(244, 201, 93, 0.98), rgba(197, 145, 34, 0.98));
+  color: #111;
+}
+
+.contact-tile__index {
+  display: block;
+  color: currentColor;
+  opacity: 0.58;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.contact-tile__icon {
+  display: grid;
+  width: 58px;
+  height: 58px;
+  place-items: center;
+  margin-top: 34px;
+  border: 1px solid currentColor;
+  color: currentColor;
+  opacity: 0.94;
+  transition:
+    transform 260ms ease,
+    background 260ms ease,
+    color 260ms ease;
+}
+
+.contact-tile__icon svg {
+  width: 27px;
+  height: 27px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.85;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.contact-tile:hover .contact-tile__icon {
+  transform: rotate(-6deg) scale(1.08);
+  background: var(--color-gold);
+  color: #111;
+}
+
+.contact-tile--gold:hover .contact-tile__icon {
+  background: #111;
+  color: var(--color-gold);
+}
+
+.contact-tile h3 {
+  margin-top: 34px;
+  color: currentColor;
+  font-size: clamp(2rem, 2.45vw, 3.05rem);
+  line-height: 0.96;
+  letter-spacing: -0.035em;
+  overflow-wrap: normal;
+  hyphens: none;
+  transition:
+    color 240ms ease,
+    transform 240ms ease;
+}
+
+.contact-tile:nth-child(4) h3 {
+  max-width: 100%;
+  font-size: clamp(1.55rem, 1.62vw, 2.05rem);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+}
+
+.contact-tile:hover h3 {
+  transform: translateX(4px);
+}
+
+.contact-tile p {
+  margin-top: 22px;
+  color: currentColor;
+  opacity: 0.72;
+  font-family: var(--font-ui);
+  font-size: clamp(0.98rem, 1vw, 1.08rem);
+  line-height: 1.55;
+}
+
+.contact-tile strong {
+  display: block;
+  margin-top: auto;
+  padding-top: 30px;
+  color: currentColor;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  transition:
+    letter-spacing 220ms ease,
+    transform 220ms ease;
+}
+
+.contact-tile:hover strong {
+  letter-spacing: 0.17em;
+  transform: translateX(4px);
+}
+
+/* BOOKING */
+
+.contact-booking {
+  padding-top: 140px;
+}
+
+.contact-booking__grid {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.78fr) minmax(0, 1fr);
+  gap: clamp(44px, 6vw, 110px);
+  align-items: start;
+}
+
+.contact-copy {
+  position: sticky;
+  top: 120px;
+}
+
+.contact-copy h2 {
+  margin-top: 18px;
+  color: var(--color-text);
+  font-size: clamp(3.4rem, 6vw, 7rem);
+  line-height: 0.9;
+}
+
+.contact-copy__stats {
+  display: grid;
+  gap: 14px;
+  margin-top: 38px;
+}
+
+.contact-copy__stats article {
+  padding: 24px;
+  border: 1px solid rgba(36, 36, 36, 0.1);
+  background: rgba(255, 255, 255, 0.48);
+}
+
+.contact-copy__stats strong {
+  display: block;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: 2.6rem;
+}
+
+.contact-copy__stats span {
+  display: block;
+  margin-top: 8px;
+  color: rgba(36, 36, 36, 0.68);
+  font-family: var(--font-heading);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* FORM */
+
+.booking-form {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(28px, 4vw, 56px);
+  border: 1px solid rgba(36, 36, 36, 0.1);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(255, 249, 235, 0.76));
+  box-shadow:
+    0 34px 100px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(18px);
+}
+
+.booking-form::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(36, 36, 36, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(36, 36, 36, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: linear-gradient(180deg, black, transparent 85%);
+}
+
+.booking-form > * {
+  position: relative;
+  z-index: 1;
+}
+
+.booking-form__chrome {
+  display: flex;
+  gap: 8px;
+}
+
+.booking-form__chrome span {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--color-gold);
+}
+
+.booking-form__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 30px;
+  padding-bottom: 26px;
+  border-bottom: 1px solid rgba(36, 36, 36, 0.08);
+}
+
+.booking-form__head p {
+  color: var(--color-gold);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.booking-form__head h3 {
+  margin-top: 10px;
+  color: var(--color-text);
+  font-size: clamp(2.8rem, 4vw, 5rem);
+  line-height: 0.9;
+}
+
+.booking-form__status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.booking-form__status span {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #22c55e;
+  box-shadow: 0 0 18px rgba(34, 197, 94, 0.48);
+}
+
+.booking-form__status strong {
+  color: rgba(36, 36, 36, 0.62);
+  font-family: var(--font-heading);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.booking-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 34px;
+}
+
+.booking-field {
+  display: grid;
+  gap: 10px;
+}
+
+.booking-field--wide {
+  grid-column: 1 / -1;
+}
+
+.booking-field span {
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.booking-field input,
+.booking-field select,
+.booking-field textarea {
+  width: 100%;
+  border: 1px solid rgba(36, 36, 36, 0.12);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.78));
+  color: var(--color-text);
+  font: inherit;
+  padding: 18px;
+  outline: 0;
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.booking-field textarea {
+  min-height: 180px;
+  resize: vertical;
+}
+
+.booking-field input:focus,
+.booking-field select:focus,
+.booking-field textarea:focus {
+  transform: translateY(-3px);
+  border-color: rgba(244, 201, 93, 0.95);
+  box-shadow:
+    0 18px 38px rgba(0, 0, 0, 0.12),
+    0 0 0 4px rgba(244, 201, 93, 0.14);
+}
+
+.booking-form__submit {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  margin-top: 28px;
+  padding: 22px 26px;
+  border: 1px solid var(--color-gold);
+  background:
+    linear-gradient(135deg, var(--color-gold), #ffd86c);
+  color: #111;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    letter-spacing 220ms ease;
+}
+
+.booking-form__submit::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.42), transparent);
+  transform: translateX(-120%);
+  transition: transform 560ms ease;
+}
+
+.booking-form__submit svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 220ms ease;
+}
+
+.booking-form__submit:hover {
+  transform: translateY(-5px);
+  letter-spacing: 0.19em;
+  box-shadow: 0 24px 60px rgba(244, 201, 93, 0.3);
+}
+
+.booking-form__submit:hover::before {
+  transform: translateX(120%);
+}
+
+.booking-form__submit:hover svg {
+  transform: translateX(6px);
+}
+
+/* MAP */
+
+.contact-map {
+  background:
+    linear-gradient(180deg, rgba(17, 17, 17, 0.96), rgba(26, 26, 26, 0.98)),
+    url('/assets/images/hero/uni-alm-interior.png') center / cover fixed;
+  color: var(--color-white);
+}
+
+.contact-map__grid {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(34px, 6vw, 92px);
+  align-items: center;
+}
+
+.contact-map__copy h2 {
+  margin-top: 18px;
+  color: var(--color-white);
+  font-size: clamp(3rem, 5vw, 5.8rem);
+  line-height: 0.92;
+}
+
+.contact-map__copy p {
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.contact-map__link {
+  display: inline-flex;
+  margin-top: 34px;
+  padding: 18px 22px;
+  border: 1px solid var(--color-gold);
+  background: var(--color-gold);
+  color: #111;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.contact-map__link:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 44px rgba(244, 201, 93, 0.22);
+}
+
+.contact-map__frame {
+  height: clamp(520px, 56vw, 720px);
+  overflow: hidden;
+  border: 1px solid rgba(244, 201, 93, 0.28);
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.32);
+}
+
+.contact-map__frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1180px) {
+  .contact-command__bar,
+  .booking-form__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact-booking__grid,
+  .contact-map__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-copy {
+    position: static;
+  }
+}
+
+@media (max-width: 760px) {
+  .contact-command__bar,
+  .booking-form__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-field--wide {
+    grid-column: auto;
+  }
+
+  .booking-form__head {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 640px) {
+  .contact-hero {
+    min-height: 620px;
+  }
+
+  .contact-hero__actions {
+    flex-direction: column;
+  }
+
+  .contact-hero__actions .btn {
+    width: 100%;
+  }
+}
