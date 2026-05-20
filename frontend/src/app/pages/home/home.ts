@@ -1,12 +1,15 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, OnDestroy, computed, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 interface HeroSlide {
-  eyebrow: string;
-  title: string;
-  description: string;
-  image: string;
-  badge?: string;
+  variant: 'beer' | 'atmosphere' | 'talk';
+  background: string;
+  headlineLeft?: string;
+  headlineRight?: string;
+  headlineCenter?: string;
+  scriptWord: string;
+  centerImage?: string;
+  centerBadge?: string;
 }
 
 @Component({
@@ -15,37 +18,41 @@ interface HeroSlide {
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
-export class Home {
+export class Home implements OnDestroy {
   protected readonly heroSlides: HeroSlide[] = [
     {
-      eyebrow: 'The only 3€ Bar in Vienna',
-      title: 'Unialm 3€ Bar',
-      description:
-        'Après-Ski Atmosphäre, 80er & 90er Sound, günstige Drinks und rustikaler Hüttencharme mitten in Wien.',
-      image: '/assets/images/hero/uni-alm-hero-interior.png',
-      badge: '/assets/logos/three-euro-bar-logo.png',
+      variant: 'beer',
+      background: '/assets/images/hero/uni-alm-interior.png',
+      headlineLeft: '3€',
+      headlineRight: 'Bar',
+      scriptWord: 'Uni Alm',
+      centerImage: '/assets/images/hero/unialm-bier.png',
     },
     {
-      eyebrow: 'Rustikal. Laut. Echt.',
-      title: 'Almhütte mitten in Wien',
-      description:
-        'Eine Bar mit alpinem Charakter, dunklem Holz, Skihütten-Feeling und kompromissloser Abendstimmung.',
-      image: '/assets/images/atmosphere/uni-alm-eingang.png',
-      badge: '/assets/logos/uni-alm-logo.png',
+      variant: 'atmosphere',
+      background: '/assets/images/hero/glasses-with-vodka-on-the-old-board.jpg',
+      headlineCenter: 'Atmosphere',
+      scriptWord: 'great',
     },
     {
-      eyebrow: 'Longdrinks, Bier & Shots',
-      title: 'Faire Preise starke Nächte',
-      description:
-        'Getränke ohne übertriebene Clubpreise. Genau richtig für Studenten, Touristen und spontane Gruppen.',
-      image: '/assets/images/drinks/gin-mule.jpg',
-      badge: '/assets/logos/three-euro-bar-logo.png',
+      variant: 'talk',
+      background: '/assets/images/hero/men-with-drinks-in-the-pub-2023.jpg',
+      headlineLeft: 'Drink',
+      headlineRight: 'Talk',
+      scriptWord: '&',
     },
   ];
 
   protected readonly activeSlideIndex = signal(0);
-
   protected readonly activeSlide = computed(() => this.heroSlides[this.activeSlideIndex()]);
+
+  private readonly autoplayInterval = window.setInterval(() => {
+    this.nextSlide();
+  }, 7200);
+
+  ngOnDestroy(): void {
+    window.clearInterval(this.autoplayInterval);
+  }
 
   protected selectSlide(index: number): void {
     this.activeSlideIndex.set(index);
@@ -59,5 +66,15 @@ export class Home {
     this.activeSlideIndex.update((current) =>
       current === 0 ? this.heroSlides.length - 1 : current - 1,
     );
+  }
+
+  protected splitText(value: string | undefined): string[] {
+    return value ? value.split('') : [];
+  }
+
+  readonly isUnialmVideoPlaying = signal(false);
+
+  playUnialmVideo(): void {
+    this.isUnialmVideoPlaying.set(true);
   }
 }

@@ -1,44 +1,76 @@
 <section class="hero">
-  @for (slide of heroSlides; track slide.title; let index = $index) {
-    <img
-      class="hero__bg"
+  @for (slide of heroSlides; track slide.background; let index = $index) {
+    <article
+      class="hero__slide"
       [class.is-active]="activeSlideIndex() === index"
-      [src]="slide.image"
-      [alt]="slide.title"
-    />
+      [class.hero__slide--beer]="slide.variant === 'beer'"
+      [class.hero__slide--atmosphere]="slide.variant === 'atmosphere'"
+      [class.hero__slide--talk]="slide.variant === 'talk'"
+    >
+      <img class="hero__bg" [src]="slide.background" alt="" />
+      <div class="hero__shade"></div>
+
+      <div class="hero__stage">
+        <div class="hero__hover-zone">
+          @if (slide.variant === 'beer') {
+            <div class="hero__beer-composition">
+              <span class="hero__beer-script" aria-hidden="true">{{ slide.scriptWord }}</span>
+
+              <strong class="hero__beer-title hero__beer-title--left" aria-label="3 Euro">
+                @for (letter of splitText(slide.headlineLeft); track $index) {
+                  <span [style.--letter-index]="$index">{{ letter }}</span>
+                }
+              </strong>
+
+              <img class="hero__beer-glass" [src]="slide.centerImage" alt="Bierglas" />
+
+              @if (slide.centerBadge) {
+                <img class="hero__beer-badge" [src]="slide.centerBadge" alt="3 Euro Bar Logo" />
+              }
+
+              <strong class="hero__beer-title hero__beer-title--right" aria-label="Bar">
+                @for (letter of splitText(slide.headlineRight); track $index) {
+                  <span [style.--letter-index]="$index">{{ letter }}</span>
+                }
+              </strong>
+            </div>
+          } @else if (slide.variant === 'atmosphere') {
+            <div class="hero__word-composition hero__word-composition--atmosphere">
+              <span class="hero__word-script" aria-hidden="true">{{ slide.scriptWord }}</span>
+
+              <strong class="hero__word-title" aria-label="Atmosphere">
+                @for (letter of splitText(slide.headlineCenter); track $index) {
+                  <span [style.--letter-index]="$index">{{ letter }}</span>
+                }
+              </strong>
+            </div>
+          } @else {
+            <div class="hero__word-composition hero__word-composition--talk">
+              <strong class="hero__word-title hero__word-title--left" aria-label="Drink">
+                @for (letter of splitText(slide.headlineLeft); track $index) {
+                  <span [style.--letter-index]="$index">{{ letter }}</span>
+                }
+              </strong>
+
+              <span class="hero__word-script" aria-hidden="true">{{ slide.scriptWord }}</span>
+
+              <strong class="hero__word-title hero__word-title--right" aria-label="Talk">
+                @for (letter of splitText(slide.headlineRight); track $index) {
+                  <span [style.--letter-index]="$index">{{ letter }}</span>
+                }
+              </strong>
+            </div>
+          }
+        </div>
+      </div>
+    </article>
   }
 
-  <div class="hero__shade"></div>
-
-  <button class="hero__arrow hero__arrow--left" type="button" aria-label="Vorheriger Slide" (click)="previousSlide()">
-    ‹
-  </button>
-
-  <button class="hero__arrow hero__arrow--right" type="button" aria-label="Nächster Slide" (click)="nextSlide()">
-    ›
-  </button>
-
-  <div class="hero__content" aria-live="polite">
-    @if (activeSlide().badge) {
-      <img class="hero__badge" [src]="activeSlide().badge" alt="" />
-    }
-
-    <p class="section-kicker">{{ activeSlide().eyebrow }}</p>
-
-    <h1>{{ activeSlide().title }}</h1>
-
-    <p>
-      {{ activeSlide().description }}
-    </p>
-
-    <div class="hero__actions">
-      <a class="btn" href="#reservierung">Jetzt reservieren</a>
-      <a class="btn btn--ghost" routerLink="/menu">3€ Menu ansehen</a>
-    </div>
-  </div>
+  <button class="hero__arrow hero__arrow--left" type="button" aria-label="Vorheriger Slide" (click)="previousSlide()">‹</button>
+  <button class="hero__arrow hero__arrow--right" type="button" aria-label="Nächster Slide" (click)="nextSlide()">›</button>
 
   <div class="hero__dots" aria-label="Hero Slides">
-    @for (slide of heroSlides; track slide.title; let index = $index) {
+    @for (slide of heroSlides; track slide.background; let index = $index) {
       <button
         type="button"
         [class.is-active]="activeSlideIndex() === index"
@@ -49,189 +81,312 @@
   </div>
 </section>
 
-<section class="features page-section reveal-zone">
-  <div class="container features__grid">
-    <article class="feature-card">
-      <span>Alm</span>
-      <h2>Ski-/Almhütte mitten im Herzen von Wien</h2>
-      <p>Traditioneller Hüttencharme mit modernem Bar-Feeling und zentraler Lage.</p>
-    </article>
-
-    <article class="feature-card">
-      <span>3€</span>
-      <h2>Qualitativer Alkohol zu fairen Preisen</h2>
-      <p>Longdrinks, Shots, Bier und Specials mit starkem Preis-Leistungs-Verhältnis.</p>
-    </article>
-
-    <article class="feature-card">
-      <span>80s</span>
-      <h2>80’s and 90’s Music</h2>
-      <p>Oldschool-Sound, lebhafte Stimmung und entspannte Barabende.</p>
-    </article>
-
-    <article class="feature-card">
-      <span>1090</span>
-      <h2>Die 3€ Bar in Wien</h2>
-      <p>Hörlgasse 10, 1090 Wien. Zentral, unkompliziert und markant.</p>
-    </article>
-  </div>
-</section>
-
-<section class="intro page-section">
+<section class="features page-section">
   <div class="container">
-    <h2 class="section-title">
-      Erlebe die Après-Ski Erfahrung mitten in Wien in unserer Unialm – die 3€ Bar
-    </h2>
+    <p class="section-kicker">Unialm Highlights</p>
+    <h2 class="section-title">Warum die Unialm anders wirkt</h2>
     <span class="section-mark"></span>
-    <p>
-      Willkommen in der Unialm, der trendigen 3€ Bar im Herzen Wiens. Unsere rustikale Bar kombiniert
-      Skihütten-Charme, günstige Getränke, hochwertige Spirituosen und nostalgische Musik aus den 80er
-      und 90er Jahren. Ob entspannter Abend, Geburtstag, Studententreff oder lange Nacht: die Unialm ist
-      ein Treffpunkt für gute Zeiten.
-    </p>
-  </div>
-</section>
 
-<section class="drink-preview page-section">
-  <div class="container drink-preview__grid">
-    <article>
-      <h2>Hol dir deine Longdrinks zu unschlagbaren Preisen</h2>
-      <img src="/assets/images/drinks/gin-mule.jpg" alt="Longdrink mit Gin und Zitrone" />
-    </article>
-
-    <article>
-      <h2>Hol dir dein hochwertiges und entspannendes Bier</h2>
-      <img src="/assets/images/drinks/beer-bottles.jpg" alt="Bierflaschen und Bierglas" />
-    </article>
-  </div>
-</section>
-
-<section class="story page-section page-section--dark">
-  <div class="container grid-2">
-    <div>
-      <h2>Top Getränke & die beste Atmosphäre der Stadt</h2>
-      <span class="section-mark section-mark--left"></span>
-      <p>
-        Tauche ein in die Unialm – 3€ Bar und entdecke die perfekte Mischung aus lebhaften Getränken,
-        alpinem Charme und einer Atmosphäre, die nicht steril, sondern echt wirkt. Unsere Karte ist auf
-        unkomplizierte Abende, gute Musik und faire Preise ausgelegt.
-      </p>
-    </div>
-
-    <div class="video-card">
-      <img src="/assets/images/hero/uni-alm-hero-interior.png" alt="Unialm Image Video Vorschau" />
-      <button type="button" aria-label="Video abspielen">▶</button>
-    </div>
-  </div>
-</section>
-
-<section class="reservation page-section" id="reservierung">
-  <div class="container">
-    <h2 class="section-title">Jetzt reservieren</h2>
-    <span class="section-mark"></span>
-    <p class="reservation__lead">
-      Reserviere einen Tisch in der Almhütte in Wien. Wähle Datum, Uhrzeit und Personenanzahl aus.
-    </p>
-
-    <form class="reservation__form">
-      <fieldset>
-        <legend>Tisch buchen</legend>
-
-        <div class="form-grid">
-          <label class="form-field">
-            <span>Datum</span>
-            <input type="date" name="date" />
-          </label>
-
-          <label class="form-field">
-            <span>Uhrzeit</span>
-            <input type="time" name="time" />
-          </label>
-
-          <label class="form-field">
-            <span>Personen</span>
-            <select name="people">
-              <option>1 Person</option>
-              <option>2 Personen</option>
-              <option>3 Personen</option>
-              <option>4 Personen</option>
-              <option>5 Personen</option>
-              <option>6+ Personen</option>
-            </select>
-          </label>
+    <div class="features__grid">
+      <article class="feature-card">
+        <div class="feature-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 96 96">
+            <path d="M23 59c-8-13-4-30 10-38 14 10 17 28 7 41" />
+            <path d="M38 22c12 0 25 7 29 21-13 5-26 2-35-9" />
+            <path d="M31 55c11-8 24-13 40-13" />
+            <circle cx="63" cy="58" r="6" />
+            <circle cx="76" cy="58" r="6" />
+            <circle cx="69" cy="70" r="6" />
+            <circle cx="82" cy="70" r="6" />
+            <circle cx="75" cy="82" r="6" />
+          </svg>
         </div>
-      </fieldset>
+        <h2>Ski-/Almhütte  im Herzen von Wien</h2>
+        <p>Traditioneller Hüttencharme mit modernem Bar-Feeling und zentraler Lage.</p>
+      </article>
 
-      <fieldset>
-        <legend>Kontaktdaten</legend>
-
-        <div class="form-grid">
-          <label class="form-field">
-            <span>Name</span>
-            <input type="text" name="name" />
-          </label>
-
-          <label class="form-field">
-            <span>E-Mail</span>
-            <input type="email" name="email" />
-          </label>
-
-          <label class="form-field">
-            <span>Telefonnummer</span>
-            <input type="tel" name="phone" />
-          </label>
+      <article class="feature-card">
+        <div class="feature-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 96 96">
+            <path d="M21 36h54v42H21z" />
+            <path d="M28 36V20h10v16" />
+            <path d="M43 36V20h10v16" />
+            <path d="M58 36V20h10v16" />
+            <path d="M30 51h36" />
+            <path d="M30 64h36" />
+            <path d="M21 78h54" />
+          </svg>
         </div>
+        <h2>Qualitativer Alkohol</h2>
+        <p>Entdecke hochwertige Spirituosen und exquisite Longdrinks zu fairen Preisen.</p>
+      </article>
 
-        <label class="form-field reservation__message">
-          <span>Nachricht</span>
-          <textarea name="message"></textarea>
-        </label>
-      </fieldset>
+      <article class="feature-card">
+        <div class="feature-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 96 96">
+            <circle cx="42" cy="44" r="22" />
+            <circle cx="42" cy="44" r="7" />
+            <path d="M68 34c5 5 8 11 8 18" />
+            <path d="M73 27c8 8 13 18 13 30" />
+            <path d="M62 59v20" />
+            <path d="M62 59h17v14" />
+            <circle cx="56" cy="80" r="6" />
+            <circle cx="73" cy="74" r="6" />
+          </svg>
+        </div>
+        <h2>80’s and 90’s Music</h2>
+        <p>Erlebe die goldene Ära der Musik mit Hits aus den 80ern und 90ern.</p>
+      </article>
 
-      <button class="btn" type="button">Buchung anfragen</button>
-    </form>
-  </div>
-</section>
-
-<section class="event-teaser page-section">
-  <div class="container grid-2">
-    <div>
-      <h2>Feiere dein Event mit uns</h2>
-      <span class="section-mark section-mark--left"></span>
-      <p>
-        Geburtstage, Abschlussfeiern, Firmenveranstaltungen oder lockere Treffen: die Unialm bietet
-        einen markanten Rahmen mit alpinem Charakter, fairen Getränkepreisen und lebendiger Atmosphäre.
-      </p>
-      <a class="btn btn--ghost" routerLink="/events">Zu den Events</a>
+      <article class="feature-card">
+        <div class="feature-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 96 96">
+            <path d="M48 86s27-26 27-49c0-16-12-27-27-27S21 21 21 37c0 23 27 49 27 49z" />
+            <circle cx="48" cy="37" r="10" />
+          </svg>
+        </div>
+        <h2>Die 3€ Bar</h2>
+        <p>Genieße deine Getränke zum unschlagbaren Preis mitten in Wien.</p>
+      </article>
     </div>
-
-    <img src="/assets/images/atmosphere/uni-alm-eingang.png" alt="Unialm Eingangsbereich mit Skiern" />
   </div>
 </section>
 
-<section class="menu-teaser page-section">
+<section class="experience-flow">
+  <section class="intro page-section">
+    <div class="container intro__grid">
+      <div>
+        <p class="section-kicker">Après-Ski. Bar-Kultur. Wien.</p>
+        <h2 class="section-title">
+          Erlebe die Après-Ski Erfahrung mitten in Wien in unserer Unialm – die 3€ Bar
+        </h2>
+        <span class="section-mark section-mark--left"></span>
+        <p>
+          Willkommen in der Unialm, der trendigen 3€ Bar im Herzen Wiens. Unsere rustikale Bar kombiniert
+          Skihütten-Charme, günstige Getränke, hochwertige Spirituosen und nostalgische Musik aus den 80er
+          und 90er Jahren. Ob entspannter Abend, Geburtstag, Studententreff oder lange Nacht: die Unialm ist
+          ein Treffpunkt für gute Zeiten.
+        </p>
+      </div>
+
+      <aside class="intro__facts" aria-label="Unialm Fakten">
+        <div>
+          <span>Standort</span>
+          <strong>Mitten in Wien</strong>
+        </div>
+        <div>
+          <span>Konzept</span>
+          <strong>Almhütte trifft Bar</strong>
+        </div>
+        <div>
+          <span>Sound</span>
+          <strong>80er & 90er</strong>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="drink-preview page-section">
+    <div class="container">
+      <div class="drink-preview__header">
+        <p class="section-kicker">Signature Drinks</p>
+        <h2 class="section-title">Getränke, die nach Nacht aussehen — nicht nach Standardkarte</h2>
+        <span class="section-mark"></span>
+      </div>
+
+      <div class="drink-preview__grid">
+        <article class="drink-card">
+          <img src="/assets/images/gallery/gin-mule-cocktail-with-gin-lemon-juice.jpg" alt="Longdrink mit Gin und Zitrone" />
+          <div>
+            <span>Longdrinks</span>
+            <h2>Hol dir deine Longdrinks zu unschlagbaren Preisen</h2>
+            <p>Frisch, direkt und ohne unnötige Show — ideal für den Start in einen langen Abend.</p>
+          </div>
+        </article>
+
+        <article class="drink-card">
+          <img src="/assets/images/gallery/Bierstock.jpg" alt="Bierflaschen und Bierglas" />
+          <div>
+            <span>Bier</span>
+            <h2>Hol dir dein hochwertiges und entspannendes Bier</h2>
+            <p>Kühl, unkompliziert und perfekt für Gruppenabende zwischen Hüttengefühl und Bar-Nacht.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="story page-section">
+    <div class="container grid-2">
+      <div>
+        <p class="section-kicker">Atmosphäre</p>
+        <h2>Top Getränke & die beste Atmosphäre der Stadt</h2>
+        <span class="section-mark section-mark--left"></span>
+        <p>
+          Tauche ein in die Unialm – 3€ Bar und entdecke die perfekte Mischung aus lebhaften Getränken,
+          alpinem Charme und einer Atmosphäre, die nicht steril, sondern echt wirkt. Unsere Karte ist auf
+          unkomplizierte Abende, gute Musik und faire Preise ausgelegt.
+        </p>
+      </div>
+
+          <div class="video-card video-card--youtube" [class.is-playing]="isUnialmVideoPlaying()">
+          @if (!isUnialmVideoPlaying()) {
+            <button
+              class="video-card__poster"
+              type="button"
+              aria-label="Unialm Image Video abspielen"
+              (click)="playUnialmVideo()"
+            >
+              <img src="/assets/images/hero/uni-alm-interior.png" alt="Unialm Image Video Vorschau" />
+              <span aria-hidden="true">▶</span>
+            </button>
+          } @else {
+            <iframe
+              src="https://www.youtube.com/embed/b8iiSElny10?autoplay=1&rel=0&modestbranding=1&playsinline=1"
+              title="Unialm Image Video"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          }
+        </div>
+    </div>
+  </section>
+</section>
+
+<section class="light-flow">
+  <section class="reservation page-section" id="reservierung">
+    <div class="container">
+      <h2 class="section-title">Jetzt reservieren</h2>
+      <span class="section-mark"></span>
+      <p class="reservation__lead">
+        Reserviere einen Tisch in der Almhütte in Wien. Wähle Datum, Uhrzeit und Personenanzahl aus.
+      </p>
+
+      <form class="reservation__form">
+        <fieldset>
+          <legend>Tisch buchen</legend>
+
+          <div class="form-grid">
+            <label class="form-field">
+              <span>Datum</span>
+              <input type="date" name="date" />
+            </label>
+
+            <label class="form-field">
+              <span>Uhrzeit</span>
+              <input type="time" name="time" />
+            </label>
+
+            <label class="form-field">
+              <span>Personen</span>
+              <select name="people">
+                <option>1 Person</option>
+                <option>2 Personen</option>
+                <option>3 Personen</option>
+                <option>4 Personen</option>
+                <option>5 Personen</option>
+                <option>6+ Personen</option>
+              </select>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Kontaktdaten</legend>
+
+          <div class="form-grid">
+            <label class="form-field">
+              <span>Name</span>
+              <input type="text" name="name" />
+            </label>
+
+            <label class="form-field">
+              <span>E-Mail</span>
+              <input type="email" name="email" />
+            </label>
+
+            <label class="form-field">
+              <span>Telefonnummer</span>
+              <input type="tel" name="phone" />
+            </label>
+          </div>
+
+          <label class="form-field reservation__message">
+            <span>Nachricht</span>
+            <textarea name="message"></textarea>
+          </label>
+        </fieldset>
+
+        <button class="btn" type="button">Buchung anfragen</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="event-teaser page-section">
+    <div class="container grid-2">
+      <div>
+        <h2>Feiere dein Event mit uns</h2>
+        <span class="section-mark section-mark--left"></span>
+        <p>
+          Geburtstage, Abschlussfeiern, Firmenveranstaltungen oder lockere Treffen: die Unialm bietet
+          einen markanten Rahmen mit alpinem Charakter, fairen Getränkepreisen und lebendiger Atmosphäre.
+        </p>
+        <a class="btn btn--ghost" routerLink="/events">Zu den Events</a>
+      </div>
+
+      <img src="/assets/images/gallery/uni-alm-eingang.png" alt="Unialm Eingangsbereich mit Skiern" />
+    </div>
+  </section>
+
+  <section class="menu-teaser page-section">
+  <div class="menu-teaser__brand-strip">
+    <div class="menu-teaser__brand-overlay"></div>
+
+    <div class="menu-teaser__brand-content">
+      <p>Ausgewählte Marken. Faire Preise. Echter Bar-Charakter.</p>
+      <h2>Great Drinks. Great Beer. Great Atmosphere.</h2>
+    </div>
+  </div>
+
   <div class="container">
-    <h2 class="section-title">Die Unialm steht für angemessene Preise mit höchster Qualität</h2>
-    <span class="section-mark"></span>
+    <div class="menu-teaser__heading">
+      <p class="section-kicker">Getränkekarte & Marken</p>
+      <h2 class="section-title">Die Unialm steht für angemessene Preise mit höchster Qualität</h2>
+      <span class="section-mark"></span>
+    </div>
 
     <div class="menu-teaser__images">
-      <img src="/assets/images/menu/getraenkekarte-seite-1.png" alt="Getränkekarte Seite 1" />
-      <img src="/assets/images/menu/getraenkekarte-seite-2.png" alt="Getränkekarte Seite 2" />
+      <img src="/assets/images/drinks/getraenkekarte-seite-1.png" alt="Getränkekarte Seite 1" />
+      <img src="/assets/images/drinks/getraenkekarte-seite-2.png" alt="Getränkekarte Seite 2" />
+    </div>
+
+    <div class="menu-brands menu-brands--logos" aria-label="Alkoholmarken in der Unialm">
+      <figure>
+        <img src="/assets/logos/jaeger-logo.png" alt="Jägermeister" />
+      </figure>
+
+      <figure>
+        <img src="/assets/logos/stoli-logo.png" alt="Stolichnaya" />
+      </figure>
+
+      <figure>
+        <img src="/assets/logos/villacher-logo.png" alt="Jack Daniel’s" />
+      </figure>
+
+      <figure>
+        <img src="/assets/logos/redbull-logo.png" alt="Red Bull" />
+      </figure>
+
+      <figure>
+        <img src="/assets/logos/hendricks-logo.png" alt="Bombay Sapphire" />
+      </figure>
+
+      <figure>
+        <img src="/assets/logos/moet.png" alt="Moët & Chandon" />
+      </figure>
     </div>
   </div>
 </section>
 
-<section class="gallery page-section">
-  <div class="container">
-    <h2 class="section-title">Einblicke in die Unialm</h2>
-    <span class="section-mark"></span>
-
-    <div class="gallery__grid">
-      <img src="/assets/images/gallery/team.jpg" alt="Unialm Team" />
-      <img src="/assets/images/gallery/shots-bar.jpg" alt="Shots an der Bar" />
-      <img src="/assets/images/gallery/gin-glasses.jpg" alt="Gin Gläser" />
-      <img src="/assets/images/gallery/tequila-drink.jpg" alt="Tequila Drink" />
-      <img src="/assets/images/gallery/two-euro-bar.jpg" alt="2 Euro Bar Schild" />
-    </div>
-  </div>
 </section>

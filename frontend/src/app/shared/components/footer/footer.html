@@ -1,13 +1,33 @@
 <footer class="site-footer">
   <div class="site-footer__banner">
-    <h2>Great drinks, great beer, great wine, great atmosphere and great people!</h2>
+    <div class="site-footer__banner-bg"></div>
+
+    <div class="site-footer__banner-content">
+      <p>Unialm Wien</p>
+      <h2>Großartige drinks, Almhüttenatmosphere und gute Stimmung!</h2>
+    </div>
   </div>
 
   <div class="container site-footer__inner">
-    <div>
-      <img class="site-footer__logo" src="/assets/logos/three-euro-bar-logo.png" alt="3 Euro Bar Logo" />
-      <p>Unialm Wien – die rustikale 3€ Bar im Herzen Wiens.</p>
-    </div>
+    <section class="site-footer__brand" aria-label="Unialm Footer Branding">
+      <a class="site-footer__logo-link" routerLink="/" aria-label="Zur Startseite">
+        <img class="site-footer__logo" src="/assets/logos/unialm.png" alt="3 Euro Bar Logo" />
+      </a>
+
+      <p>
+        Unialm Wien – die rustikale 3€ Bar im Herzen Wiens. Alpine Bar-Atmosphäre,
+        faire Preise und Nächte mit Charakter.
+      </p>
+
+      <a
+        class="site-footer__creator"
+        href="https://benedikt-wychert.at"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Website by <strong>benedikt-wychert.at</strong>
+      </a>
+    </section>
 
     <nav class="site-footer__nav" aria-label="Footer Navigation">
       <a routerLink="/">Home</a>
@@ -20,10 +40,15 @@
     </nav>
 
     <address class="site-footer__contact">
-      <strong>Unialm Wien</strong>
+      <strong>Uni Alm Wien</strong>
       <span>Hörlgasse 10, 1090 Wien</span>
       <a href="tel:+436606804879">+43 660 680 4879</a>
       <a href="mailto:info@unialm.at">info&#64;unialm.at</a>
     </address>
+  </div>
+
+  <div class="container site-footer__bottom">
+    <span>© 2026 Unialm Wien. Alle Rechte vorbehalten.</span>
+    <span>Designed & developed by <a href="https://benedikt-wychert.at" target="_blank" rel="noopener noreferrer">benedikt-wychert.at</a></span>
   </div>
 </footer>

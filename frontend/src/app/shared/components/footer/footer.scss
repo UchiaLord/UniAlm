@@ -1,56 +1,256 @@
 .site-footer {
-  background: var(--color-black);
-  color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(244, 201, 93, 0.13), transparent 30%),
+    radial-gradient(circle at 86% 22%, rgba(244, 201, 93, 0.08), transparent 34%),
+    linear-gradient(180deg, #17130f 0%, #0f0c09 100%);
+  color: #fff;
+}
+
+.site-footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.032) 1px, transparent 1px);
+  background-size: 42px 42px;
+  opacity: 0.74;
+  pointer-events: none;
 }
 
 .site-footer__banner {
-  min-height: 260px;
+  position: relative;
+  min-height: clamp(280px, 24vw, 430px);
   display: grid;
   place-items: center;
-  padding: 48px 24px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.site-footer__banner-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   background:
-    linear-gradient(rgba(0, 0, 0, 0.36), rgba(0, 0, 0, 0.48)),
-    url('/assets/images/drinks/beer-bottles.jpg') center / cover;
+    linear-gradient(rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.72));
+  filter: grayscale(1) contrast(1.08) brightness(0.78);
+  transform: scale(1.04);
+}
+
+.site-footer__banner::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 1;
+  height: 150px;
+  background: linear-gradient(180deg, transparent, #17130f);
+  pointer-events: none;
+}
+
+.site-footer__banner-content {
+  position: relative;
+  z-index: 2;
+  width: min(100% - 48px, 1280px);
+  margin: 0 auto;
   text-align: center;
 }
 
-.site-footer__banner h2 {
-  max-width: 900px;
-  font-size: clamp(2.4rem, 5vw, 5rem);
-  color: var(--color-white);
+.site-footer__banner-content p {
+  margin: 0 0 18px;
+  color: #f4c95d;
+  font-family: var(--font-heading);
+  font-size: clamp(0.78rem, 0.78vw, 0.95rem);
+  font-weight: 900;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.site-footer__banner-content h2 {
+  max-width: 1160px;
+  margin: 0 auto;
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 5.7vw, 7.5rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.065em;
+  text-transform: uppercase;
+  text-wrap: balance;
 }
 
 .site-footer__inner {
+  position: relative;
+  z-index: 2;
   display: grid;
-  grid-template-columns: 1.1fr 1fr 1fr;
-  gap: 48px;
-  padding-block: 64px;
+  grid-template-columns: minmax(320px, 1.1fr) minmax(240px, 0.7fr) minmax(280px, 0.8fr);
+  gap: clamp(44px, 6vw, 110px);
+  padding: clamp(76px, 7vw, 120px) 0 clamp(44px, 4vw, 72px);
+}
+
+.site-footer__brand {
+  max-width: 520px;
+}
+
+.site-footer__logo-link {
+  display: inline-grid;
+  width: clamp(104px, 8vw, 150px);
+  margin-bottom: 30px;
 }
 
 .site-footer__logo {
-  width: 86px;
-  margin-bottom: 18px;
+  width: 100%;
+  height: auto;
+  filter:
+    drop-shadow(0 22px 40px rgba(0, 0, 0, 0.32))
+    saturate(1.04);
 }
 
-.site-footer__nav,
+.site-footer__brand p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: clamp(1rem, 1vw, 1.16rem);
+  line-height: 1.8;
+}
+
+.site-footer__creator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  text-decoration: none;
+  transition:
+    color 220ms ease,
+    transform 220ms ease;
+}
+
+.site-footer__creator strong {
+  color: #f4c95d;
+  font-weight: 900;
+}
+
+.site-footer__creator:hover {
+  color: #fff;
+  transform: translateX(4px);
+}
+
+.site-footer__nav {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+}
+
+.site-footer__nav a,
+.site-footer__contact a {
+  position: relative;
+  width: fit-content;
+  color: rgba(255, 255, 255, 0.72);
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 1vw, 1.25rem);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    color 220ms ease,
+    transform 220ms ease;
+}
+
+.site-footer__nav a::after,
+.site-footer__contact a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background: #f4c95d;
+  transition: width 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.site-footer__nav a:hover,
+.site-footer__contact a:hover {
+  color: #fff;
+  transform: translateX(4px);
+}
+
+.site-footer__nav a:hover::after,
+.site-footer__contact a:hover::after {
+  width: 100%;
+}
+
 .site-footer__contact {
   display: grid;
-  gap: 12px;
-  font-family: var(--font-ui);
+  align-content: start;
+  gap: 14px;
+  margin: 0;
   font-style: normal;
 }
 
-.site-footer a {
-  color: var(--color-muted);
-  transition: color 180ms ease;
+.site-footer__contact strong {
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 2.2vw, 3.2rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
 }
 
-.site-footer a:hover {
-  color: var(--color-gold);
+.site-footer__contact span {
+  max-width: 280px;
+  color: rgba(255, 255, 255, 0.64);
+  font-size: 1.02rem;
+  line-height: 1.7;
 }
 
-@media (max-width: 860px) {
+.site-footer__bottom {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  border-top: 1px solid rgba(244, 201, 93, 0.18);
+  padding: 24px 0 34px;
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 0.92rem;
+}
+
+.site-footer__bottom a {
+  color: #f4c95d;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.site-footer__bottom a:hover {
+  color: #fff;
+}
+
+@media (max-width: 1100px) {
+  .site-footer__inner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .site-footer__brand {
+    grid-column: 1 / -1;
+    max-width: 760px;
+  }
+}
+
+@media (max-width: 760px) {
+  .site-footer__banner-content {
+    width: min(100% - 32px, 1280px);
+  }
+
   .site-footer__inner {
     grid-template-columns: 1fr;
+  }
+
+  .site-footer__bottom {
+    flex-direction: column;
   }
 }
