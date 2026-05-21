@@ -1,3 +1,2 @@
-Route bei 3Euro Menu crossed mit Home
-Jump up Button geht nicht
 SEO Anpassung: Alle
+Responsivebug: Event Kalender - Schrift immer zu groß, 4 Kontakt Cards

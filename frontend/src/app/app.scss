@@ -2,3 +2,21 @@
   display: block;
   min-height: 100vh;
 }
+
+.cookie-consent-layer {
+  position: fixed;
+  left: 24px;
+  bottom: 96px;
+  z-index: 2147483647;
+  width: min(680px, calc(100vw - 48px));
+  pointer-events: auto;
+}
+
+@media (max-width: 640px) {
+  .cookie-consent-layer {
+    left: 16px;
+    right: 16px;
+    bottom: 24px;
+    width: auto;
+  }
+}

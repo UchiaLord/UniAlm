@@ -12,7 +12,12 @@
   </div>
 
   <nav class="navbar" aria-label="Hauptnavigation">
-    <a class="navbar__brand" routerLink="/" aria-label="Unialm Startseite" (click)="closeMobileMenu()">
+    <a
+      class="navbar__brand"
+      routerLink="/"
+      aria-label="Unialm Startseite"
+      (click)="closeMobileMenu()"
+    >
       <img src="/assets/logos/Uni-Alm-Logo-Schrift-1.png" alt="Uni Alm Logo" />
     </a>
 
@@ -29,13 +34,54 @@
     </button>
 
     <div class="navbar__links" [class.is-open]="mobileOpen()">
-      <a routerLink="/" routerLinkActive="is-active" (click)="closeMobileMenu()">Home</a>
-      <a routerLink="/menu" routerLinkActive="is-active" (click)="closeMobileMenu()">3€ Menu</a>
-      <a routerLink="/ueber-uns" routerLinkActive="is-active" (click)="closeMobileMenu()">Über uns</a>
-      <a routerLink="/events" routerLinkActive="is-active" (click)="closeMobileMenu()">Events</a>
-      <a routerLink="/kontakt" routerLinkActive="is-active" (click)="closeMobileMenu()">Kontakt</a>
+      <a
+        routerLink="/"
+        routerLinkActive="is-active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="closeMobileMenu()"
+      >
+        Home
+      </a>
+
+      <a
+        routerLink="/menu"
+        routerLinkActive="is-active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="closeMobileMenu()"
+      >
+        3€ Menu
+      </a>
+
+      <a
+        routerLink="/ueber-uns"
+        routerLinkActive="is-active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="closeMobileMenu()"
+      >
+        Über uns
+      </a>
+
+      <a
+        routerLink="/events"
+        routerLinkActive="is-active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="closeMobileMenu()"
+      >
+        Events
+      </a>
+
+      <a
+        routerLink="/kontakt"
+        routerLinkActive="is-active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="closeMobileMenu()"
+      >
+        Kontakt
+      </a>
     </div>
 
-    <a class="navbar__cta" routerLink="/reservierung" (click)="closeMobileMenu()">Reservierung</a>
+    <a class="navbar__cta" routerLink="/kontakt" (click)="closeMobileMenu()">
+      Anfragen
+    </a>
   </nav>
 </header>

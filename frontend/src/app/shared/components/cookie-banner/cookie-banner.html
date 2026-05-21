@@ -1,0 +1,105 @@
+@if (showBanner()) {
+  <section
+    class="cookie-banner"
+    role="dialog"
+    aria-modal="false"
+    aria-labelledby="cookie-banner-title"
+    aria-describedby="cookie-banner-description"
+  >
+    <div class="cookie-banner__panel">
+      <div class="cookie-banner__content">
+        <span class="cookie-banner__kicker">Datenschutz & Cookies</span>
+
+        <h2 id="cookie-banner-title">Cookie-Einstellungen</h2>
+
+        <p id="cookie-banner-description">
+          Wir verwenden notwendige Technologien für den Betrieb der Website.
+          Optionale Dienste wie externe Medien, Statistik oder Marketing werden
+          nur nach Ihrer Einwilligung aktiviert.
+        </p>
+
+        @if (showDetails()) {
+          <div class="cookie-banner__options" aria-label="Cookie-Kategorien">
+            <div class="cookie-banner__option">
+              <div>
+                <strong>Notwendig</strong>
+                <p>Erforderlich für Grundfunktionen der Website.</p>
+              </div>
+
+              <span class="cookie-banner__required">Immer aktiv</span>
+            </div>
+
+            <button
+              type="button"
+              class="cookie-banner__option"
+              [class.is-active]="externalMedia()"
+              [attr.aria-pressed]="externalMedia()"
+              (click)="toggleExternalMedia()"
+            >
+              <div>
+                <strong>Externe Medien</strong>
+                <p>Erlaubt Inhalte wie Google Maps und YouTube.</p>
+              </div>
+
+              <span>{{ externalMedia() ? 'Aktiv' : 'Inaktiv' }}</span>
+            </button>
+
+            <button
+              type="button"
+              class="cookie-banner__option"
+              [class.is-active]="analytics()"
+              [attr.aria-pressed]="analytics()"
+              (click)="toggleAnalytics()"
+            >
+              <div>
+                <strong>Statistik</strong>
+                <p>Hilft uns, die Nutzung der Website zu verstehen.</p>
+              </div>
+
+              <span>{{ analytics() ? 'Aktiv' : 'Inaktiv' }}</span>
+            </button>
+
+            <button
+              type="button"
+              class="cookie-banner__option"
+              [class.is-active]="marketing()"
+              [attr.aria-pressed]="marketing()"
+              (click)="toggleMarketing()"
+            >
+              <div>
+                <strong>Marketing</strong>
+                <p>Ermöglicht werbliche Inhalte und externe Plattformdienste.</p>
+              </div>
+
+              <span>{{ marketing() ? 'Aktiv' : 'Inaktiv' }}</span>
+            </button>
+          </div>
+        }
+
+        <a routerLink="/datenschutz" class="cookie-banner__privacy">
+          Datenschutzerklärung öffnen
+        </a>
+      </div>
+
+      <div class="cookie-banner__actions">
+        <button type="button" class="cookie-banner__ghost" (click)="rejectOptional()">
+          Nur notwendige
+        </button>
+
+        <button type="button" class="cookie-banner__ghost" (click)="toggleDetails()">
+          {{ showDetails() ? 'Details ausblenden' : 'Einstellungen' }}
+        </button>
+
+        @if (showDetails()) {
+          <button type="button" class="cookie-banner__secondary" (click)="saveSelection()">
+            Auswahl speichern
+          </button>
+        }
+
+        <button type="button" class="cookie-banner__primary" (click)="acceptAll()">
+          Alle akzeptieren
+        </button>
+      </div>
+    </div>
+  </section>
+}

@@ -1,4 +1,4 @@
-<section class="hero" aria-label="Highlights der Unialm Wien">
+<section class="hero" aria-label="Highlights der Uni Alm Wien">
   @for (slide of heroSlides; track slide.background; let index = $index) {
     <article
       class="hero__slide"
@@ -13,7 +13,7 @@
 
       <div class="hero__meta">
         <span>Hörlgasse 10 · 1090 Wien</span>
-        <span>Täglich 20:00 – 02:00 Uhr</span>
+        <span>Mo – Sa · 20:00 – 02:00 Uhr</span>
       </div>
 
       <div class="hero__stage">
@@ -31,7 +31,7 @@
               <img
                 class="hero__beer-glass"
                 [src]="slide.centerImage"
-                alt="Bierglas der Unialm 3 Euro Bar Wien"
+                alt="Bierglas der Uni Alm 3 Euro Bar Wien"
               />
 
               <strong class="hero__beer-title hero__beer-title--right" aria-label="Bar">
@@ -70,12 +70,12 @@
         </div>
       </div>
 
-      <div class="hero__content">
+      <div class="hero__content"  aria-live="polite">
         <p>Premium Drinks · Après-Ski · Wien</p>
-        <h1>Die 3€ Bar im Herzen Wiens</h1>
+        <h1>Uni Alm Wien – die 3€ Bar im Herzen Wiens</h1>
 
         <div class="hero__actions">
-          <a class="btn" routerLink="/menu">3€ Menü ansehen</a>
+          <a class="btn" routerLink="/menu">3€ Getränkekarte ansehen</a>
           <a class="btn btn--ghost-dark" routerLink="/kontakt">Reservieren</a>
         </div>
       </div>
@@ -100,7 +100,7 @@
     ›
   </button>
 
-  <div class="hero__dots" role="tablist" aria-label="Hero-Slides der Unialm Wien">
+  <div class="hero__dots" role="tablist" aria-label="Hero-Slides der Uni Alm Wien">
     @for (slide of heroSlides; track slide.background; let index = $index) {
       <button
         type="button"
@@ -114,7 +114,7 @@
   </div>
 </section>
 
-<section class="signature-strip" aria-label="Kurzinfos zur Unialm Wien">
+<section class="signature-strip" aria-label="Kurzinfos zur Uni Alm Wien">
   <div class="signature-strip__item">
     <span>01</span>
     <strong>3€ Drinks</strong>
@@ -139,8 +139,8 @@
 <section class="features page-section" aria-labelledby="features-title">
   <div class="container">
     <header class="section-head section-head--center">
-      <p class="section-kicker">Unialm Highlights</p>
-      <h2 id="features-title" class="section-title">Warum die Unialm anders wirkt</h2>
+      <p class="section-kicker">Uni Alm Highlights</p>
+      <h2 id="features-title" class="section-title">Warum die Uni Alm anders wirkt</h2>
       <span class="section-mark"></span>
       <p>
         Rustikale Skihütten-Atmosphäre, moderne Bar-Energie, faire Preise und
@@ -228,29 +228,29 @@
         <p class="section-kicker">Après-Ski. Bar-Kultur. Wien.</p>
 
         <h2 id="intro-title" class="section-title section-title--left">
-          Unialm Wien — 3€ Bar mit Hüttencharakter
+          Uni Alm Wien — 3€ Bar mit Hüttencharakter
         </h2>
 
         <span class="section-mark section-mark--left"></span>
 
         <p>
-          Willkommen in der Unialm Wien: eine Bar, die nicht steril wirken will.
+          Willkommen in der Uni Alm Wien: eine Bar, die nicht steril wirken will.
           Hier treffen Skihütten-Charme, günstige Drinks, hochwertige Marken,
           80er- und 90er-Musik und eine direkte Wiener Bar-Energie aufeinander.
         </p>
 
         <p>
           Ob spontaner Abend, Geburtstag, Studententreff oder lange Nacht mit
-          Freunden — die Unialm ist dein Treffpunkt für Drinks, Musik und echte
+          Freunden — die Uni Alm ist dein Treffpunkt für Drinks, Musik und echte
           Atmosphäre.
         </p>
       </div>
 
-      <aside class="intro__panel" aria-label="Fakten zur Unialm Wien">
+      <aside class="intro__panel" aria-label="Fakten zur Uni Alm Wien">
         <div class="intro__panel-image">
           <img
             src="/assets/images/gallery/uni-alm-eingang.png"
-            alt="Eingangsbereich der Unialm Wien"
+            alt="Eingangsbereich der Uni Alm Wien"
             loading="lazy"
           />
         </div>
@@ -291,7 +291,7 @@
         <article class="drink-card">
           <img
             src="/assets/images/gallery/gin-mule-cocktail-with-gin-lemon-juice.jpg"
-            alt="Longdrink mit Gin und Zitrone in der Unialm Wien"
+            alt="Longdrink mit Gin und Zitrone in der Uni Alm Wien"
             loading="lazy"
           />
           <div>
@@ -305,7 +305,7 @@
         <article class="drink-card drink-card--offset">
           <img
             src="/assets/images/gallery/Bierstock.jpg"
-            alt="Bierflaschen und Bierglas in der Unialm 3 Euro Bar Wien"
+            alt="Bier und Longdrinks in der Uni Alm Wien im 9. Bezirk"
             loading="lazy"
           />
           <div>
@@ -331,30 +331,30 @@
         <span class="section-mark section-mark--left"></span>
 
         <p>
-          Die Unialm lebt von Kontrasten: Holz, Ski, Barlicht, Musik, Gruppen,
+          Die Uni Alm lebt von Kontrasten: Holz, Ski, Barlicht, Musik, Gruppen,
           Drinks und dieses leicht chaotische Gefühl, das gute Nächte brauchen.
         </p>
       </div>
 
-      <div class="video-card video-card--youtube" [class.is-playing]="isUnialmVideoPlaying()">
-        @if (!isUnialmVideoPlaying()) {
+      <div class="video-card video-card--youtube" [class.is-playing]="isUni AlmVideoPlaying()">
+        @if (!isUni AlmVideoPlaying()) {
           <button
             class="video-card__poster"
             type="button"
-            aria-label="Atmosphäre der Unialm Wien als Video abspielen"
-            (click)="playUnialmVideo()"
+            aria-label="Atmosphäre der Uni Alm Wien als Video abspielen"
+            (click)="playUni AlmVideo()"
           >
             <img
               src="/assets/images/hero/uni-alm-interior.png"
-              alt="Innenbereich der Unialm Wien mit Après-Ski Atmosphäre"
+              alt="Innenbereich der Uni Alm Wien mit Après-Ski Atmosphäre"
               loading="lazy"
             />
             <span aria-hidden="true">▶</span>
           </button>
         } @else {
           <iframe
-            src="https://www.youtube.com/embed/b8iiSElny10?autoplay=1&rel=0&modestbranding=1&playsinline=1"
-            title="Atmosphäre der Unialm Wien"
+            src="https://www.youtube-nocookie.com/embed/b8iiSElny10?autoplay=1&rel=0&modestbranding=1&playsinline=1"
+            title="Atmosphäre der Uni Alm Wien"
             loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen
@@ -378,7 +378,7 @@
         <span class="section-mark section-mark--left"></span>
 
         <p>
-          Reserviere direkt für deinen Abend in der Unialm. Für Gruppen,
+          Reserviere direkt für deinen Abend in der Uni Alm. Für Gruppen,
           Geburtstage oder private Feiern kannst du uns im Nachrichtenfeld
           zusätzliche Infos schicken.
         </p>
@@ -396,7 +396,7 @@
         </div>
       </div>
 
-      <form class="reservation__form" aria-label="Tischreservierung für die Unialm Wien">
+      <form class="reservation__form" aria-label="Tischreservierung für die Uni Alm Wien">
         <div class="reservation__form-head">
           <span>Uni Alm Wien</span>
           <h3>Buchung anfragen</h3>
@@ -478,14 +478,14 @@
         <span class="section-mark section-mark--left"></span>
 
         <p>
-          Die Unialm bietet einen markanten Rahmen mit alpinem Charakter,
+          Die Uni Alm bietet einen markanten Rahmen mit alpinem Charakter,
           fairen Getränkepreisen und lebendiger Atmosphäre.
         </p>
 
         <a
           class="btn btn--ghost"
           routerLink="/events"
-          aria-label="Mehr über Events in der Unialm Wien erfahren"
+          aria-label="Mehr über Events in der Uni Alm Wien erfahren"
         >
           Zu den Events
         </a>
@@ -494,7 +494,7 @@
       <div class="event-teaser__image">
         <img
           src="/assets/images/gallery/uni-alm-eingang.png"
-          alt="Eingangsbereich der Unialm Wien mit Skiern"
+          alt="Eingangsbereich der Uni Alm Wien mit Skiern"
           loading="lazy"
         />
       </div>
@@ -507,7 +507,7 @@
 
       <div class="menu-teaser__brand-content">
         <p>Ausgewählte Marken. Faire Preise. Echter Bar-Charakter.</p>
-        <h2>Gute Drinks. Gutes Bier. Echte Unialm Atmosphäre.</h2>
+        <h2>Gute Drinks. Gutes Bier. Echte Uni Alm Atmosphäre.</h2>
       </div>
     </div>
 
@@ -520,20 +520,20 @@
         <span class="section-mark"></span>
       </header>
 
-      <div class="menu-teaser__images" aria-label="Getränkekarte der Unialm Wien">
+      <div class="menu-teaser__images" aria-label="Getränkekarte der Uni Alm Wien">
         <img
           src="/assets/images/drinks/getraenkekarte-seite-1.png"
-          alt="Getränkekarte der Unialm Wien Seite 1"
+          alt="Getränkekarte der Uni Alm Wien Seite 1"
           loading="lazy"
         />
         <img
           src="/assets/images/drinks/getraenkekarte-seite-2.png"
-          alt="Getränkekarte der Unialm Wien Seite 2"
+          alt="Getränkekarte der Uni Alm Wien Seite 2"
           loading="lazy"
         />
       </div>
 
-      <div class="menu-brands menu-brands--logos" aria-label="Ausgewählte Getränkemarken in der Unialm Wien">
+      <div class="menu-brands menu-brands--logos" aria-label="Ausgewählte Getränkemarken in der Uni Alm Wien">
         <figure>
           <img src="/assets/logos/jaeger-logo.png" alt="Jägermeister" loading="lazy" />
         </figure>

@@ -5,40 +5,59 @@
 
     <div class="events-hero__content">
       <p class="events-hero__kicker">Uni Alm Wien · Events · Private Feiern</p>
-      <h1 id="events-title">Events</h1>
+
+      <h1 id="events-title">Events & private Feiern in der Uni Alm Wien</h1>
+
       <p>
-        Geburtstage, Abschlussfeiern, Specials und Partynächte mit
-        Uni-Alm-Charakter — inklusive Kalenderübersicht für kommende Termine.
+        Geburtstage, Abschlussfeiern, Gruppenabende, Specials und Partynächte
+        mit echter Après-Ski-Atmosphäre mitten im 9. Bezirk. Hier findest du
+        kommende Termine und kannst deine Feier direkt anfragen.
       </p>
 
       <div class="events-hero__actions">
-        <a routerLink="/kontakt" class="btn">Event anfragen</a>
-        <a routerLink="/3-euro-menu" class="btn btn--ghost">Zum 3€ Menü</a>
+        <a
+          routerLink="/kontakt"
+          class="btn"
+          aria-label="Event oder private Feier in der Uni Alm Wien anfragen"
+        >
+          Event anfragen
+        </a>
+
+        <a
+          routerLink="/menu"
+          class="btn btn--ghost"
+          aria-label="Zum 3€ Menü der Uni Alm Wien"
+        >
+          Zum 3€ Menü
+        </a>
       </div>
     </div>
   </section>
 
-  <section class="events-intro page-section">
+  <section class="events-intro page-section" aria-labelledby="events-intro-title">
     <div class="container events-intro__grid">
       <div class="events-intro__copy reveal-up">
         <span class="section-kicker">Veranstaltungen</span>
-        <h2>Dein Abend. Unsere Bar. Ein klarer Plan.</h2>
+
+        <h2 id="events-intro-title">Dein Abend. Unsere Bar. Ein klarer Plan.</h2>
+
         <span class="section-mark"></span>
 
         <p>
-          Die Uni Alm ist gemacht für Gruppen, spontane Runden und Feiern, die
-          nicht steif wirken sollen. Wir bieten dir eine Location mit Charakter,
-          fairen Getränkepreisen und einer Atmosphäre, die sofort funktioniert.
+          Die Uni Alm Wien ist gemacht für Geburtstage, Studienabschlüsse,
+          Gruppenabende und private Feiern, die unkompliziert bleiben sollen.
+          Unsere Bar verbindet faire Getränkepreise, 80er- & 90er-Hits,
+          Longdrinks, Shots und alpine Atmosphäre mitten im Wiener Nachtleben.
         </p>
 
         <p>
-          Ob Geburtstag, Studienabschluss, Firmenrunde oder privates Treffen:
-          Wir schaffen den Rahmen für einen Abend, der unkompliziert bleibt und
-          trotzdem hängen bleibt.
+          Ob kleine Runde, große Gruppe oder private Feier: Wir schaffen den
+          Rahmen für einen Abend mit Charakter, guter Musik und Drinks zum
+          bekannten Uni Alm Preis.
         </p>
       </div>
 
-      <div class="events-intro__stats reveal-up">
+      <div class="events-intro__stats reveal-up" aria-label="Event-Fakten zur Uni Alm Wien">
         <article>
           <strong>20:00</strong>
           <span>Start in die Nacht</span>
@@ -46,79 +65,108 @@
 
         <article>
           <strong>3€</strong>
-          <span>Drinks & Shots</span>
+          <span>Longdrinks & Shots</span>
         </article>
 
         <article>
           <strong>1090</strong>
-          <span>Mitten in Wien</span>
+          <span>Wien · 9. Bezirk</span>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="events-calendar page-section">
-  <div class="container">
-    <header class="events-section-head events-section-head--dark">
-      <span class="section-kicker">Kalender</span>
-      <h2>Eventkalender {{ monthLabel }}</h2>
-      <span class="section-mark"></span>
-      <p>
-        Öffentliche Specials werden hier eingetragen. Private Feiern und
-        Gruppenabende können jederzeit direkt angefragt werden.
-      </p>
-    </header>
+  <section class="events-calendar page-section" aria-labelledby="events-calendar-title">
+    <div class="container">
+      <header class="events-section-head events-section-head--dark">
+        <span class="section-kicker">Kalender</span>
 
-    <div class="calendar-shell">
-      <div class="calendar-toolbar">
-        <button type="button" aria-label="Vorheriger Monat" (click)="previousMonth()">←</button>
+        <h2 id="events-calendar-title">Eventkalender {{ monthLabel }}</h2>
 
-        <div>
-          <button type="button" class="calendar-toolbar__today" (click)="goToCurrentMonth()">
-            Dieser Monat
+        <span class="section-mark"></span>
+
+        <p>
+          Öffentliche Specials werden hier eingetragen. Private Feiern,
+          Geburtstage und Gruppenabende können jederzeit direkt angefragt werden.
+        </p>
+      </header>
+
+      <div class="calendar-shell">
+        <div class="calendar-toolbar">
+          <button
+            type="button"
+            aria-label="Vorherigen Monat im Eventkalender anzeigen"
+            (click)="previousMonth()"
+          >
+            ←
           </button>
-          <strong>{{ monthLabel }}</strong>
+
+          <div>
+            <button
+              type="button"
+              class="calendar-toolbar__today"
+              aria-label="Aktuellen Monat im Eventkalender anzeigen"
+              (click)="goToCurrentMonth()"
+            >
+              Dieser Monat
+            </button>
+
+            <strong>{{ monthLabel }}</strong>
+          </div>
+
+          <button
+            type="button"
+            aria-label="Nächsten Monat im Eventkalender anzeigen"
+            (click)="nextMonth()"
+          >
+            →
+          </button>
         </div>
 
-        <button type="button" aria-label="Nächster Monat" (click)="nextMonth()">→</button>
-      </div>
+        <div class="calendar-weekdays" aria-hidden="true">
+          <span *ngFor="let weekday of weekdays">{{ weekday }}</span>
+        </div>
 
-      <div class="calendar-weekdays" aria-hidden="true">
-        <span *ngFor="let weekday of weekdays">{{ weekday }}</span>
-      </div>
+        <div class="calendar-grid" [attr.aria-label]="'Eventkalender der Uni Alm Wien für ' + monthLabel">
+          <div
+            class="calendar-day"
+            *ngFor="let day of calendarDays"
+            [class.calendar-day--muted]="!day.isCurrentMonth"
+            [class.calendar-day--today]="day.isToday"
+            [class.calendar-day--event]="day.events.length > 0"
+          >
+            <strong>{{ day.dayNumber }}</strong>
 
-      <div class="calendar-grid" [attr.aria-label]="'Eventkalender ' + monthLabel">
-        <div
-          class="calendar-day"
-          *ngFor="let day of calendarDays"
-          [class.calendar-day--muted]="!day.isCurrentMonth"
-          [class.calendar-day--today]="day.isToday"
-          [class.calendar-day--event]="day.events.length > 0"
-        >
-          <strong>{{ day.dayNumber }}</strong>
-
-          <div class="calendar-day__events" *ngIf="day.events.length > 0">
-            <span *ngFor="let event of day.events">
-              {{ event.title }}
-            </span>
+            <div class="calendar-day__events" *ngIf="day.events.length > 0">
+              <span *ngFor="let event of day.events">
+                {{ event.title }}
+              </span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="calendar-note">
-        <span *ngIf="events.length === 0">Keine öffentlichen Fixtermine veröffentlicht.</span>
-        <span *ngIf="events.length > 0">{{ events.length }} Termine veröffentlicht.</span>
-        <a routerLink="/kontakt">Private Feier anfragen</a>
+        <div class="calendar-note">
+          <span *ngIf="events.length === 0">Keine öffentlichen Fixtermine veröffentlicht.</span>
+          <span *ngIf="events.length > 0">{{ events.length }} Termine veröffentlicht.</span>
+
+          <a
+            routerLink="/kontakt"
+            aria-label="Private Feier in der Uni Alm Wien anfragen"
+          >
+            Private Feier anfragen
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-  <section class="events-current page-section">
+  <section class="events-current page-section" aria-labelledby="events-current-title">
     <div class="container">
       <header class="events-section-head">
         <span class="section-kicker">Aktuelle Events</span>
-        <h2>Kommende Nächte in der Uni Alm</h2>
+
+        <h2 id="events-current-title">Kommende Nächte in der Uni Alm Wien</h2>
+
         <span class="section-mark"></span>
       </header>
 
@@ -131,13 +179,22 @@
 
           <div class="event-card__content">
             <p class="event-card__eyebrow">Geburtstag · Abschluss · Gruppe</p>
-            <h3>Private Feiern in der Uni Alm</h3>
+
+            <h3>Private Feiern in der Uni Alm Wien</h3>
+
             <p>
-              Reserviere deinen Abend für Geburtstage, Abschlussfeiern oder
-              größere Gruppen. Wir sorgen für Drinks, Stimmung und einen Ablauf,
-              der nicht kompliziert wird.
+              Reserviere deinen Abend für Geburtstage, Abschlussfeiern,
+              Studienabschlüsse oder größere Gruppen. Wir sorgen für Drinks,
+              Musik und einen Ablauf, der unkompliziert bleibt.
             </p>
-            <a routerLink="/kontakt" class="event-card__link">Anfrage senden</a>
+
+            <a
+              routerLink="/kontakt"
+              class="event-card__link"
+              aria-label="Private Feier in der Uni Alm Wien anfragen"
+            >
+              Anfrage senden
+            </a>
           </div>
         </article>
 
@@ -149,29 +206,49 @@
 
           <div class="event-card__content">
             <p class="event-card__eyebrow">Monats-Specials</p>
+
             <h3>Neue Termine folgen</h3>
+
             <p>
-              Aktuell sind keine öffentlichen Spezial-Events veröffentlicht. Die
-              nächsten Termine werden hier angezeigt, sobald sie fixiert sind.
+              Aktuell sind keine öffentlichen Spezial-Events veröffentlicht.
+              Neue Events, Themenabende und Partynächte werden hier angezeigt,
+              sobald sie fixiert sind.
             </p>
-            <a routerLink="/kontakt" class="event-card__link">Nachfragen</a>
+
+            <a
+              routerLink="/kontakt"
+              class="event-card__link"
+              aria-label="Nach aktuellen Events in der Uni Alm Wien fragen"
+            >
+              Nachfragen
+            </a>
           </div>
         </article>
 
         <article class="event-card">
           <div class="event-card__date">
-            <span>Daily</span>
+            <span>Mo – Sa</span>
             <strong>Bar</strong>
           </div>
 
           <div class="event-card__content">
-            <p class="event-card__eyebrow">Jeden Abend</p>
-            <h3>Uni-Alm-Nachtbetrieb</h3>
+            <p class="event-card__eyebrow">Regulärer Barbetrieb</p>
+
+            <h3>Uni Alm Nachtbetrieb</h3>
+
             <p>
               Auch ohne Sonderveranstaltung bleibt die Uni Alm dein Spot für
-              Longdrinks, Shots, Musik und unkomplizierte Abende im 9. Bezirk.
+              Longdrinks, Shots, 80er- & 90er-Hits und unkomplizierte Abende
+              im 9. Bezirk.
             </p>
-            <a routerLink="/3-euro-menu" class="event-card__link">Menü ansehen</a>
+
+            <a
+              routerLink="/menu"
+              class="event-card__link"
+              aria-label="3€ Menü der Uni Alm Wien ansehen"
+            >
+              Menü ansehen
+            </a>
           </div>
         </article>
       </div>

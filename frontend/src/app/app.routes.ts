@@ -7,6 +7,7 @@ import { Menu } from './pages/menu/menu';
 import { Events } from './pages/events/events';
 import { Contact } from './pages/contact/contact';
 import { Impressum } from './pages/impressum/impressum';
+import { Datenschutz } from './pages/datenschutz/datenschutz';
 
 export const routes: Routes = [
   {
@@ -16,7 +17,7 @@ export const routes: Routes = [
       {
         path: '',
         component: Home,
-        title: 'Unialm Wien | 3€ Bar, Après-Ski Atmosphäre & Longdrinks',
+        title: 'Uni Alm Wien | 3€ Bar, Après-Ski Atmosphäre & Longdrinks',
         data: {
           seo: {
             description:
@@ -32,11 +33,11 @@ export const routes: Routes = [
       {
         path: 'ueber-uns',
         component: About,
-        title: 'Über uns | Unialm Wien – 3€ Bar im Herzen Wiens',
+        title: 'Über uns | Uni Alm Wien – 3€ Bar im Herzen Wiens',
         data: {
           seo: {
             description:
-              'Erfahre mehr über die Unialm Wien: rustikale Almhüttenatmosphäre, faire Getränkepreise, gute Musik und echte Bar-Kultur mitten in Wien.',
+              'Erfahre mehr über die Uni Alm Wien: rustikale Almhüttenatmosphäre, faire Getränkepreise, gute Musik und echte Bar-Kultur mitten in Wien.',
             canonical: 'https://unialm.at/ueber-uns',
             ogTitle: 'Über uns | Unialm Wien',
             ogDescription:
@@ -52,7 +53,7 @@ export const routes: Routes = [
         data: {
           seo: {
             description:
-              'Entdecke das 3€ Menü der Unialm Wien: Longdrinks, Shots, Spirituosen und Bar-Klassiker zu fairen Preisen mitten im Wiener Nachtleben.',
+              'Entdecke das 3€ Menü der Uni Alm Wien: Longdrinks, Shots, Spirituosen und Bar-Klassiker zu fairen Preisen mitten im Wiener Nachtleben.',
             canonical: 'https://unialm.at/menu',
             ogTitle: '3€ Menü | Unialm Wien',
             ogDescription:
@@ -64,15 +65,15 @@ export const routes: Routes = [
       {
         path: 'events',
         component: Events,
-        title: 'Events & Feiern | Unialm Wien',
+        title: 'Events & private Feiern in Wien | Uni Alm Wien',
         data: {
           seo: {
             description:
-              'Feiere Geburtstage, Abschlussfeiern, Firmenveranstaltungen und Gruppenabende in der Unialm Wien mit alpiner Atmosphäre und fairen Getränkepreisen.',
+               'Events, Geburtstage, Abschlussfeiern und private Feiern in der Uni Alm Wien. Après-Ski-Atmosphäre, 3€ Drinks, 80er- & 90er-Hits und Gruppenabende im 9. Bezirk.',
             canonical: 'https://unialm.at/events',
             ogTitle: 'Events & Feiern | Unialm Wien',
             ogDescription:
-              'Dein Event in der Unialm Wien: alpine Bar-Atmosphäre, Drinks, Musik und Stimmung für Gruppen, Geburtstage und Feiern.',
+               'Plane Geburtstage, Gruppenabende und private Feiern in der Uni Alm Wien mit Drinks, Musik und Après-Ski-Atmosphäre.',
             ogImage: 'https://unialm.at/assets/images/gallery/uni-alm-eingang.png',
           },
         },
@@ -80,7 +81,7 @@ export const routes: Routes = [
       {
         path: 'kontakt',
         component: Contact,
-        title: 'Kontakt | Unialm Wien',
+        title: 'Kontakt | Uni Alm Wien',
         data: {
           seo: {
             description:
@@ -102,6 +103,19 @@ export const routes: Routes = [
             description: 'Impressum der Unialm Wien.',
             canonical: 'https://unialm.at/impressum',
             noindex: true,
+          },
+        },
+      },
+      {
+        path: 'datenschutz',
+        component: Datenschutz,
+        title: 'Datenschutz | Unialm Wien',
+        data: {
+            seo: {
+              description:
+                'Datenschutzerklärung der Unialm Wien mit Informationen zur Verarbeitung personenbezogener Daten, Kontaktaufnahme, Cookies und zukünftigen Website-Funktionen.',
+              canonical: 'https://unialm.at/datenschutz',
+              noindex: true,
           },
         },
       },
